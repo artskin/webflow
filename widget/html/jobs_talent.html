@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .innerBox {
+            display: block;
+            width: 100%;
+        }
+        .innerBox li {
+            width: 100%;
+            height: 60px;
+            background: #FFFFFF;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #CDCCD1;
+        }
+        .smallFont{
+            font-size: 13px;
+            color: #bebebe;
+        }
+        .flex1{
+            -webkit-box-flex:1;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="list" class="innerBox">
+    <li style="">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;"><img height="40" width="40"
+                  src="../image/avatar_jiudian.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">互联网李莫愁</div>
+
+            <div class="smallFont flex1">保密/互联网</div>
+        </div>
+    </li>
+    <li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_kaifa.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">运营小宝</div>
+
+            <div class="smallFont flex1">保密</div>
+        </div>
+    </li>
+    <li style="">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;"><img height="40" width="40"
+                  src="../image/avatar_kefu.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">产品赵半山</div>
+
+            <div class="smallFont flex1">2014-07-18 00:00:00</div></div>
+    </li><li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_other.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">风头黄药师</div>
+
+            <div class="smallFont flex1">2014-07-18 00:00:00</div></div>
+    </li>
+    <li style="">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;"><img height="40" width="40"
+                  src="../image/avatar_shejishi.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">其他欧阳锋</div>
+
+            <div class="smallFont flex1">2014-07-18 00:00:00</div></div>
+    </li>
+    <li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_youxicehua.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">高管一灯</div>
+
+            <div class="smallFont flex1">2014-07-18 00:00:00</div>
+        </div>
+    </li>
+
+</ul>
+</body>
+<script src="../script/api.js"></script>
+<script>
+
+    apiready = function () {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: 'rgba(0,0,0,0)',
+            textColor: '#666',
+            textDown: '下拉刷新',
+            textUp: '释放刷新'
+        }, function(ret, err){
+            loadData();
+        });
+        api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+            loadData();
+        });
+    };
+	
+    function loadData(){
+        api.refreshHeaderLoadDone();
+        var content = $api.byId('list');
+        $api.append(content,$api.html(content));
+        api.parseTapmode();
+    }
+</script>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+	
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .innerBox {
+            display: block;
+            width: 100%;
+        }
+        .innerBox li {
+            width: 100%;
+            height: 60px;
+            background: #FFFFFF;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #CDCCD1;
+        }
+        .smallFont{
+            font-size: 13px;
+            color: #bebebe;
+        }
+        .flex1{
+            -webkit-box-flex:1;
+        }
+
+    </style>
+</head>
+<body>
+</body>
+<script src="../script/api.js"></script>
+<script>
+
+var subView; //!< 子视图.
+	
+    apiready = function () {				
+		var listView = api.require("listView");
+		subView = listView;
+		var cells = [
+				{
+					placeHoldImg:'widget://image/contacts_dist1.png',
+					img:'"./image/contacts_dist1.png',
+					title:'管理一度人脉(42)',
+	        titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/contacts_dist2.png',
+					img:'"./image/contacts_dist2.png',
+					title:'发现二度人脉(150)',
+	        titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_jiudian.png',
+					img:'"./image/avatar_jiudian.png',
+					title:'互联网李莫愁',
+					subTitle:'保密/互联网',
+			        titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kaifa.png',
+					img:'"./image/avatar_kaifa.png',
+					title:'运营小宝',
+					subTitle:'保密',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kefu.png',
+					img:'"./image/avatar_kefu.png',
+					title:'产品赵半山',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_other.png',
+					img:'"./image/avatar_other.png',
+					title:'风头黄药师',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_shejishi.png',
+					img:'"./image/avatar_shejishi.png',
+					title:'其他欧阳锋',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_youxicehua.png',
+					img:'"./image/avatar_youxicehua.png',
+					title:'高管一灯',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_jiudian.png',
+					img:'"./image/avatar_jiudian.png',
+					title:'互联网李莫愁',
+					subTitle:'保密/互联网',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kaifa.png',
+					img:'"./image/avatar_kaifa.png',
+					title:'运营小宝',
+					subTitle:'保密',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kefu.png',
+					img:'"./image/avatar_kefu.png',
+					title:'产品赵半山',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_other.png',
+					img:'"./image/avatar_other.png',
+					title:'风头黄药师',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_shejishi.png',
+					img:'"./image/avatar_shejishi.png',
+					title:'其他欧阳锋',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_youxicehua.png',
+					img:'"./image/avatar_youxicehua.png',
+					title:'高管一灯',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_jiudian.png',
+					img:'"./image/avatar_jiudian.png',
+					title:'互联网李莫愁',
+					subTitle:'保密/互联网',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kaifa.png',
+					img:'"./image/avatar_kaifa.png',
+					title:'运营小宝',
+					subTitle:'保密',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_kefu.png',
+					img:'"./image/avatar_kefu.png',
+					title:'产品赵半山',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_other.png',
+					img:'"./image/avatar_other.png',
+					title:'风头黄药师',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_shejishi.png',
+					img:'"./image/avatar_shejishi.png',
+					title:'其他欧阳锋',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				},
+				{
+					placeHoldImg:'widget://image/avatar_youxicehua.png',
+					img:'"./image/avatar_youxicehua.png',
+					title:'高管一灯',
+					subTitle:'2014-07-18 00:00:00',
+	        		titleColor: "#000000",
+			        subTitleSize: "11",
+			        subTitleColor: "#999999"
+				}
+					];
+		
+		listView.open({
+			"cellBgColor": "#ffffff",	        
+			rightBtn: [{
+	            color: "#52C09A",
+	            selecteColor: "#429b7c",
+	            title: "查看"
+	        },{
+	            color: "#E76B65",
+	            selecteColor: "#bc534d",
+	            title: "删除"
+	        }],
+	        rightBg: "#e9e9e9",
+			"cellHeight": api.frameHeight/8, //!< 保证刚好可以满屏.
+		    "h": api.winHeight - 49 - 64, //!< 单以iOS8 ,iPhone5作布局参考.
+			"data": cells
+			},function(ret,err){
+				/* 二度人脉,语音搜索. */
+				if(1 === ret["index"]){
+	   				 api.toast({
+	   					 msg: '大声告诉我:您想认识谁?',
+	   					 duration: 1000,
+	   					 location: 'middle'
+	   				 });
+				 
+   				 var speechRecognizer = api.require('speechRecognizer');
+   				 speechRecognizer.record({
+   					    },function(ret,err){
+   					       if(ret.status){
+   							   api.alert({"title": "提示", "msg": "正在茫茫人海中为您搜寻 "+ ret["wordStr"] +" 的足迹!"});
+   					       }else{
+   		     				  	api.alert({"title": "出错了", "msg": err.msg});
+   					       }
+   					     });
+						 return;
+				}
+				
+				/* 一度人脉:打开通讯录,自动给好友打电话. */
+				if(0 === ret["index"]){
+					var contact = api.require('contact');
+					
+				    contact.openContact({},function(ret,err){
+						var group = ret["phones"]["0"];
+						if("undefined" === typeof(group)){
+							api.alert({"title":"提示", "msg": "未存储此人号码,无法拨号!"});
+						}
+						
+						var phoneNum;
+						for(var groupName in group){
+							phoneNum = group[groupName];
+							break;
+						}
+						
+						api.call({
+							"number": phoneNum
+						});    
+				             });
+					
+					return;
+				}
+				
+				api.toast({
+					msg: '您尚未加入脉脉,暂无法查看此人信息!',
+					duration: 1000,
+					location: 'middle'
+				});
+		    	
+		});
+    };
+	
+	// -------------------------------------------
+	
+    function loadData(){
+        api.refreshHeaderLoadDone();
+        var content = $api.byId('list');
+        $api.append(content,$api.html(content));
+        api.parseTapmode();
+    }
+	
+	// -----------------------------------------
+	
+	/* 关闭自身. */
+	function closeSelf(){
+		/*关闭前,先释放相关资源.*/
+		
+		if(subView["close"]){ // 关闭子视图.
+			subView["close"]();
+		}
+		
+		// 关闭自身.
+		api.closeWin();
+		
+	}
+	
+	// ------------------------------------------
+</script>
+</html>

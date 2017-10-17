@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .innerBox {
+            display: block;
+            width: 100%;
+        }
+        .innerBox li {
+            width: 100%;
+            height: 60px;
+            background: #FFFFFF;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #CDCCD1;
+        }
+        .smallFont{
+            font-size: 13px;
+            color: #bebebe;
+        }
+        .flex1{
+            -webkit-box-flex:1;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="list" class="innerBox">
+    <li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;"  tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_fangchan.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;" >
+            <div style="-webkit-box-flex:1;">装修业务员</div>
+
+            <div  class="smallFont flex1">内蒙古呼和浩特月薪7k</div>
+
+            <div  class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li>
+    <li style=""   tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;" ><img height="40" width="40"
+                  src="../image/avatar_gaoguan.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">销售顾问</div>
+
+            <div  class="smallFont flex1">北京百合月薪17k</div>
+
+            <div  class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li>
+    <li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;"   tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"  onclick="weiXinShare()"><img height="40" width="40"
+                  src="../image/avatar_gongyi.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">产品经理</div>
+
+            <div class="smallFont flex1">北京完美</div>
+
+            <div  class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li><li style=""   tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;" onclick="weiXinShare()"><img height="40" width="40"
+                  src="../image/avatar_jian.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">学徒工</div>
+
+            <div  class="smallFont flex1">吉林延边</div>
+
+            <div class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li>
+    <li style="background-image: url('../image/relation_2du.png');background-size: 32px;background-position: top right;background-repeat: no-repeat;"   tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_jiaoyu.png" onclick="weiXinShare()"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">信息员</div>
+
+            <div  class="smallFont flex1">郑州</div>
+
+            <div class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li>
+    <li style=""   tapmode="" onclick = "weiXinShare()">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;background-image: url('../image/has_read_flag.png');background-size: 14px;background-position: top left;background-repeat: no-repeat;" onclick="weiXinShare()"><img height="40" width="40"
+                  src="../image/avatar_jinrong.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;line-height: 17px;">
+            <div style="-webkit-box-flex:1;">程序员</div>
+
+            <div class="smallFont flex1">北京海淀</div>
+
+            <div  class="smallFont flex1">发布人xxx,影响力14</div></div>
+    </li>
+
+</ul>
+</body>
+<script src="../script/api.js"></script>
+<script>
+
+    apiready = function () {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: 'rgba(0,0,0,0)',
+            textColor: '#666',
+            textDown: '下拉刷新',
+            textUp: '释放刷新'
+        }, function(ret, err){
+            loadData();
+        });
+        api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+            loadData();
+        });
+    };
+	
+    function loadData(){
+        api.refreshHeaderLoadDone();
+        var content = $api.byId('list');
+        $api.append(content,$api.html(content));
+        api.parseTapmode();
+    }
+	
+	/* 微信分享. */
+	function weiXinShare(){
+    	/* 体验微信分享模块. */
+		api.confirm({
+			"title": "体验 微信 分享功能",
+			"msg": "分享APICloud端API传奇到朋友圈...",
+			"buttons": ["残忍拒绝", "立即分享"]
+		}, function(ret, err){
+
+			if(2 == ret.buttonIndex){
+				follow();
+			}
+		})
+
+		// 一个内部方法,用于实现完整的微信分享功能.
+		function follow()
+		{
+		    var weiXin = api.require('weiXin');
+		    weiXin.registerApp({
+		        appId: 'wxd0d84bbf23b4a0e4'
+		    }, function(ret, err) {
+		        if (!ret.status) {// 应用注册失败
+					api.alert({
+						"title": "分享失败",
+						"msg": "您可手动关注我们的公众账号:APICloud",
+						"buttons": ["确定"]
+					}, function(ret, err){
+
+					});
+
+					return;
+		        } 
+				/*发布微信分享*/
+			    weiXin.sendRequest({
+			        scene: "timeline",
+			        contentType: "web_page",
+					title:"APICloud全球首家完美兼容iPhone6，有图有真相~~",
+			        description: "iOS8崩溃吗？iPhone6适配了吗？APICloud全球首家完美兼容iPhone6，有图有真相~~",
+			        thumbUrl: "http://mmbiz.qpic.cn/mmbiz/lp6euAmKsAFS1YTWZSyvDBmA4JkibHqlKzDVEWQRbpiagddy5uXdHkM6CgXpNPHhibco5uIemWul9pSaUD9JxpC5Q/0",
+			        contentUrl: "http://mp.weixin.qq.com/s?__biz=MzA3MTk3MTQyMQ==&mid=200555999&idx=1&sn=ceb2ca5f93906aff3ba0339c7abf2488#rd"
+
+			    }, function(ret, err) {
+			        if ( ! ret.status) {
+			            api.alert({
+			                title: '分享失败',
+			                msg: '您可手动关注我们的公众账号:APICloud',
+			                buttons: ['确定']
+			            });
+			        } else {
+			            api.alert({
+			                title: '分享成功',
+			                msg: '感谢您对我们的支持!',
+			                buttons: ['确定']
+			            });
+			        };
+			    });
+		    });
+
+		}
+	}
+</script>
+</html>
