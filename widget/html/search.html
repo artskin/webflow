@@ -1,159 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-        <title>APICloud APP</title>
-        <link rel="stylesheet" type="text/css" href="../css/api.css" />
-        <style>
-            header {
-                background: #fcfcfc;
-                height: 50px;
-                border-bottom: 1px solid #DDDFE3;
-            }
-            
-            .left {
-                float: left;
-                width: 50px;
-                height: 50px;
-                background: url(../image/header/back.png) no-repeat center center;
-                background-size: 15px auto;
-            }
-            
-            .right {
-                float: right;
-                width: 50px;
-                line-height: 50px;
-                color: #FF8400;
-                font-size: 16px;
-                text-align: center;
-            }
-            
-            .right-hov {
-                color: #DD8400;
-            }
-            
-            .middle {
-                position: absolute;
-                left: 50px;
-                right: 60px;
-                margin-top: 8px;
-                height: 34px;
-                border-radius: 34px;
-                background-color: #E8E8E8;
-            }
-            
-            .middle>img:first-child {
-                float: left;
-                padding-top: 7px;
-                height: 20px;
-                vertical-align: top;
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-            
-            .middle>input {
-                position: absolute;
-                left: 40px;
-                right: 50px;
-                margin-top: 8px;
-                height: 18px;
-                line-height: 18px;
-                color: #999;
-                font-size: 14px;
-                outline: none;
-            }
-            
-            .middle>input::-webkit-input-placeholder {
-                color: #666;
-                line-height: 18px;
-                font-size: 14px;
-            }
-            
-            .middle>img:last-child {
-                float: right;
-                padding-top: 4px;
-                height: 27px;
-                vertical-align: top;
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-        </style>
-    </head>
-
-    <body>
-        <header id="header">
-            <div class="left event-back"></div>
-            <div class="right" tapmode="highlight" onclick="fnSearch();">搜索</div>
-            <div class="middle">
-                <img src="../image/header/search_groupbuy.png">
-                <input id="searchText" type="text" placeholder="请输入搜索内容">
-                <img src="../image/header/mic.png" tapmode onclick="fnOpenSpeechRecognizer();">
-            </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+	
+        html body{
+            height: 100%;
+            background-color: #ffffff;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            display: -webkit-box;
+            display: box;
+        }
+        .search-input{
+            margin-left: 7px;
+            padding-left: 26px;
+            width: 90%;
+            height: 30px;
+            border: 0;
+            border-radius: 8px;
+            background-color: #DDDDDD;
+            /*去除系统默认的样式*/
+            -webkit-appearance: none;
+            outline: #ffffff;
+        }
+        .search-advertise{
+            position: absolute;
+            left: 16px;
+            top: 15px;
+            width: 18px;
+            height: 18px;
+            background-image:url("../image/search_icon.png");
+            background-repeat: no-repeat no-repeat;
+            background-size: 17px;
+        }
+        .flex1{
+            -webkit-box-flex:1;
+        }
+        .search-tag{
+            background-color:#6495F9;
+            color: #ffffff;
+            padding: 5px;
+        }
+        .webkit-box-center{
+            display:-webkit-box;
+            -webkit-box-pack:center;
+            -webkit-box-align:center
+        }
+        .tagBox{
+            margin-top: 22px;
+        }
+        .cancel{
+            width:50px;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 100%">
+        <header id="header" style="background-color: #ffffff; height:44px;line-height: 44px">
+            <ul>
+                <li class="flex1">
+                    <input type="text" class="search-input" placeholder="搜人名,昵称,公司,学校..."/>
+                    <span class="search-advertise" id="search-advertise"></span>
+                </li>
+                <li tapmode="" onclick="closeWin()" class="cancel webkit-box-center">
+                    <span style="color: #0044BB;">取消</span>
+                </li>
+            </ul>
         </header>
-    </body>
-    <script type="text/javascript" src="../script/api.js"></script>
-    <script type="text/javascript" src="../script/common.js"></script>
-    <script type="text/javascript">
-        apiready = function() {
-            fnReady();
-            fnInitInput();
-            fnReadyFrame();
-        };
+        <section>
+            <ul class="tagBox">
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">CEO</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">技术总监</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">产品经理</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">运营</span>
+                </li>
 
-        var uiinput, searchText;
+            </ul>
+            <ul class="tagBox">
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">百度</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">阿里</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">腾讯</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">搜狗</span>
+                </li>
+                <li class="flex1 webkit-box-center">
+                    <span class="search-tag">清华大学</span>
+                </li>
 
-        function fnInitInput() {
-            searchText = $api.byId('searchText');
-            var rect = $api.offset(searchText);
-            uiinput = api.require('UIInput');
-            uiinput.open({
-                rect: rect,
-                styles: {
-                    bgColor: '#E8E8E8',
-                    size: 14,
-                    color: '#999',
-                    placeholder: {
-                        color: '#ccc'
-                    }
-                },
-                maxRows: 1,
-                placeholder: '请输入搜索内容',
-                keyboardType: 'search',
-                fixedOn: api.frameName
-            });
-        };
-
-        function fnOpenSpeechRecognizer() {
-            api.toast({
-                msg: '开始语音识别',
-                duration: 3000,
-                location: 'middle'
-            });
-
-            var speechRecognizer = api.require('speechRecognizer');
-            speechRecognizer.record({}, function(ret, err) {
-                if (ret.status) {
-                    $api.byId('searchText').value = ret.wordStr;
-                }
-            });
-        };
-
-        function fnSearch() {
-            uiinput.value(function(ret, err) {
-                if (ret.status) {
-                    api.openWin({
-                        name: 'search_result',
-                        url: './search_result.html',
-                        bounces: false,
-                        pageParam: {
-                            keyword: ret.msg
-                        }
-                    });
-                }
-            });
-        };
-    </script>
-
+            </ul>
+        </section>
+    </div>
+<script src="../script/api.js"></script>	
+<script>
+    function closeWin(){
+        api.closeWin({
+            name: 'search',
+            animation: {
+                type: "reveal",
+                subType: "from_top",
+                duration: 300
+            }
+        });
+    }
+	
+	apiready = function () {
+	    var header = $api.byId('header');
+		(function(el){
+		        var strDM = api.systemType;
+		        if (strDM == 'ios') {
+		            var strSV = api.systemVersion;
+		            var numSV = parseInt(strSV,10);   
+		            var fullScreen = api.fullScreen;
+		            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
+		            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
+		                el.style.paddingTop = '20px';
+					
+						/* 搜索图标单独处理. */
+						$api.byId('search-advertise').style.top = "35px";
+		            }
+		        }   
+		    })(header);
+	};
+</script>
+</body>
 </html>

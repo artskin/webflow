@@ -1,466 +1,509 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        #header_home {
+            display: -webkit-box;
+        }
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
-        <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-        <title>APICloud App</title>
-        <link rel="stylesheet" type="text/css" href="./css/api.css" />
-        <style>
-            html,
-            body {
-                height: 100%;
-            }
-            
-            body {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-flex-flow: column;
-                flex-flow: column;
-            }
-            
-            section {
-                -webkit-box-flex: 1;
-                -webkit-flex: 1;
-                flex: 1;
-            }
-            
-            header {
-                position: relative;
-                height: auto;
-            }
-            
-            footer {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: flex;
-                box-sizing: border-box;
-                height: 50px;
-                background-color: rgb(250, 250, 250);
-                border-top: 1px solid #ccc;
-            }
-            
-            footer>div {
-                -webkit-box-flex: 1;
-                -webkit-flex: 1;
-                flex: 1;
-                width: 100%;
-                color: rgb(165, 165, 165);
-                font-size: 12px;
-                text-align: center;
-                padding-bottom: 4px;
-                padding-top: 34px;
-                background-repeat: no-repeat;
-                background-position: center 6px;
-                background-size: auto 24px;
-            }
-            
-            footer>div:nth-child(1) {
-                background-image: url(./image/footer/home.png);
-            }
-            
-            footer>div:nth-child(2) {
-                background-image: url(./image/footer/groupbuy.png);
-            }
-            
-            footer>div:nth-child(3) {
-                background-image: url(./image/footer/find.png);
-            }
-            
-            footer>div:nth-child(4) {
-                background-image: url(./image/footer/my.png);
-            }
-            
-            footer>div:nth-child(1).active {
-                background-image: url(./image/footer/home_act.png);
-                color: rgb(254, 151, 84);
-            }
-            
-            footer>div:nth-child(2).active {
-                background-image: url(./image/footer/groupbuy_act.png);
-                color: rgb(254, 151, 84);
-            }
-            
-            footer>div:nth-child(3).active {
-                background-image: url(./image/footer/find_act.png);
-                color: rgb(254, 151, 84);
-            }
-            
-            footer>div:nth-child(4).active {
-                background-image: url(./image/footer/my_act.png);
-                color: rgb(254, 151, 84);
-            }
-            
-            .header-item {
-                position: relative;
-                display: none;
-            }
-            
-            .header-item-act {
-                display: block;
-            }
-            
-            header>div:nth-child(1) {
-                position: relative;
-                background-color: rgb(255, 132, 0);
-                height: 50px;
-            }
-            
-            header>div:nth-child(2) {
-                position: relative;
-                height: 50px;
-                background-color: rgb(252, 252, 252);
-            }
-            
-            header>div:nth-child(3) {
-                position: relative;
-                height: 50px;
-                background-color: rgb(252, 252, 252);
-            }
-            /* header home */
-            
-            .home-citylist {
-                float: left;
-                height: 50px;
-                line-height: 50px;
-                color: #fff;
-                font-size: 14px;
-                margin-left: 15px;
-            }
-            
-            .home-citylist>img {
-                height: 20px;
-                vertical-align: top;
-                padding-top: 15px;
-            }
-            
-            .home-search {
-                position: absolute;
-                bottom: 8px;
-                left: 90px;
-                right: 60px;
-                height: 34px;
-                line-height: 34px;
-                background-color: rgb(250, 102, 4);
-                border-radius: 34px;
-                color: rgb(253, 194, 155);
-                font-size: 14px;
-            }
-            
-            .home-search>img {
-                height: 20px;
-                padding-top: 7px;
-                padding-left: 10px;
-                padding-right: 10px;
-                vertical-align: top;
-            }
-            
-            .home-msg {
-                float: right;
-            }
-            
-            .home-msg>img {
-                height: 28px;
-                padding-top: 11px;
-                vertical-align: top;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-            /* header groupbuy */
-            
-            .groupbuy-citylist {
-                float: left;
-                height: 50px;
-                line-height: 50px;
-                color: rgb(255, 132, 0);
-                font-size: 18px;
-                margin-left: 15px;
-            }
-            
-            .groupbuy-citylist>img {
-                height: 15px;
-                vertical-align: top;
-                padding-top: 18px;
-            }
-            
-            .groupbuy-search {
-                position: absolute;
-                bottom: 8px;
-                left: 110px;
-                right: 15px;
-                height: 34px;
-                line-height: 34px;
-                background-color: rgb(232, 232, 232);
-                border-radius: 34px;
-                color: rgb(153, 153, 153);
-                font-size: 14px;
-            }
-            
-            .groupbuy-search>img {
-                height: 20px;
-                padding-top: 7px;
-                padding-left: 10px;
-                padding-right: 10px;
-                vertical-align: top;
-            }
-            /* header search */
-            
-            .find-search {
-                position: absolute;
-                bottom: 8px;
-                left: 15px;
-                right: 60px;
-                height: 34px;
-                line-height: 34px;
-                border-radius: 34px;
-                background-color: rgb(232, 232, 232);
-                color: rgb(153, 153, 153);
-                font-size: 14px;
-            }
-            
-            .find-search>img {
-                height: 20px;
-                padding-top: 7px;
-                padding-left: 10px;
-                padding-right: 10px;
-                vertical-align: top;
-            }
-            
-            .find-scanner {
-                float: right;
-                width: 50px;
-                background: url(./image/header/qrcode_search.png) no-repeat center 6px;
-                background-size: auto 24px;
-                padding-top: 33px;
-                color: rgb(153, 153, 153);
-                font-size: 12px;
-                text-align: center;
-            }
-            
-            .find-scanner-hov {
-                background-color: #ddd;
-            }
-            
-            .highlight {
-                opacity: 0.7;
-            }
-        </style>
-    </head>
+        .flex1 {
+            -webkit-box-flex: 1
+        }
 
-    <body>
-        <header id="header">
-            <div class="header-item header-item-act" id="home">
-                <div class="home-citylist open-win" win="html/citylist">
-                    <span class="currentCity">武汉</span>
-                    <img src="./image/header/arrow_down_home.png">
-                </div>
-                <div class="home-search open-win" win="html/search">
-                    <img src="./image/header/search_home.png">
-                    <span>输入商户名、地点</span>
-                </div>
-                <div class="home-msg open-win" win="html/message">
-                    <img src="./image/header/msg_home.png">
-                </div>
+        .flex2 {
+            -webkit-box-flex: 2
+        }
+
+        .flex3 {
+            -webkit-box-flex: 3
+        }
+
+        .flex4 {
+            -webkit-box-flex: 4
+        }
+
+        ul {
+            width: 100%;
+            list-style: none;
+            display: -webkit-box;
+            display: box;
+        }
+
+        .search-input {
+            margin-left: 7px;
+            width: 90%;
+            height: 30px;
+            border: 0;
+            border-radius: 13px;
+            background: #0070B9;
+            /*去除系统默认的样式*/
+            -webkit-appearance: none;
+            outline: #ffffff;
+        }
+        .search-inputActive{
+           background-color: #013B62;
+        }
+        .search-advertise {
+            background-size: 26px;
+            position: absolute;
+            left: 8px;
+            top: 11px;
+            width: 30px;
+            height: 30px;
+            background-image: url("./image/btn_search_bg.png");
+            background-repeat: no-repeat no-repeat;
+        }
+
+        .add-package {
+            background-image: url("./image/btn_add_connection_normal.png");
+            background-repeat: no-repeat no-repeat;
+            background-position: center center;
+        }
+
+        .add-publish {
+            background-image: url("./image/job_publish_select.png");
+            background-repeat: no-repeat no-repeat;
+            background-position: center center;
+            -webkit-background-size: 30px;
+        }
+
+        .slider_status {
+            width: 240px;
+            height: 2px;
+            left: 71px;
+            top: 35 px;
+            position: absolute;
+        }
+
+        .slider_status span {
+            display: block;
+            width: 73px;
+            height: 100%;
+            background-color: #FFFFFF;
+            -webkit-transition: 300ms;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<div id="main">
+    <!--header开始-->
+    <div id="header">
+        <input type="radio" name="headers" id="iheader_home" checked="true"/>
+
+        <div id="header_home">
+            <a id="back_home" tapmode="" onclick="openSearch()" class="search"></a>
+            <a tapmode="" onclick="slderbar('homeGroup',0)" id="checkSt" class="flex2" style="color: #ffffff;text-align: center">
+                实名动态
+            </a>
+            <a tapmode="" onclick="slderbar('homeGroup',1)" class="flex2" style="color: #ffffff;text-align: center">
+                匿名八卦
+            </a>
+
+            <a id="load_home" class="gossip" tapmode="" onclick="openScanner()"></a>
+
+            <div class="slider_status" id="slider_statust">
+                <span id="home_bar"></span>
             </div>
-            <div class="header-item" id="groupbuy">
-                <div class="groupbuy-citylist open-win" win="html/citylist">
-                    <span class="currentCity">北京</span>
-                    <img src="./image/header/arrow_down_groupbuy.png">
-                </div>
-                <div class="groupbuy-search open-win" win="html/search">
-                    <img src="./image/header/search_groupbuy.png">搜索团购...
-                </div>
+        </div>
+        <input type="radio" name="headers" id="iheader_jobs"/>
+
+        <div id="header_jobs" style="-webkit-box-orient:vertical;height:75px">
+            <ul class="flex1">
+                <li style="-webkit-box-flex:5;" onclick="opacity(this)">
+                    <input type="text" class="search-input" tapmode="search-inputActive" onclick="openSearch()"/>
+                    <span class="search-advertise" id="search-advertise1"></span>
+                </li>
+                <li style="width: 60px" class="add-publish" tapmode="" onclick="openPicture()">
+
+                </li>
+            </ul>
+            <ul style="background-color: #f0f0f0;height: 30px;line-height: 30px">
+                <li tapmode="" onclick="slderbar('jobsGroup',0)" class="flex2"
+                    style="color: #000;text-align: center;border-right: 1px solid #fff">
+                    看职位
+                </li>
+                <li tapmode="" onclick="slderbar('jobsGroup',1)" class="flex2" style="color: #000;text-align: center">
+                    招人才
+                </li>
+
+            </ul>
+
+        </div>
+        <input type="radio" name="headers" id="iheader_contacts"/>
+
+        <div id="header_contacts">
+            <ul>
+                <li style="-webkit-box-flex:5;" onclick="opacity(this)">
+                    <input type="text" class="search-input" tapmode="search-inputActive" onclick="openSearch()"/>
+                    <span class="search-advertise" id="search-advertise2"></span>
+                </li>
+                <li style="width: 60px" class="add-package" tapmode="" onclick="openContacts()">
+
+                </li>
+            </ul>
+        </div>
+        <input type="radio" name="headers" id="iheader_myself"/>
+
+        <div id="header_myself" style="text-align: center">
+            <a tapmode="" onclick="slderbar('myselfGroup',0)" id="myCheckSt" class="flex2" style="color: #ffffff">
+                消息中心
+            </a>
+            <a tapmode="" onclick="slderbar('myselfGroup',1)" class="flex2" style="color: #ffffff">
+                个人设置
+            </a>
+
+            <div class="slider_status" style="left: 42px;" id="My_slider_status">
+                <span id="myself"></span>
             </div>
-            <div class="header-item" id="find">
-                <div class="find-search open-win" win="html/search">
-                    <img src="./image/header/search_groupbuy.png"> 输入商户名、地点
-                </div>
-                <div class="find-scanner" tapmode="highlight" onclick="fnOpenScanner()">
-                    扫一扫
-                </div>
-            </div>
-            <div class="header-item" id="my">
-            </div>
-        </header>
-        <section></section>
-        <footer id="footer">
-            <div class="menu active" tapmode="active" onclick="fnChange(0)">首页</div>
-            <div class="menu" tapmode="active" onclick="fnChange(1)">团购</div>
-            <div class="menu" tapmode="active" onclick="fnChange(2)">发现</div>
-            <div class="menu" tapmode="active" onclick="fnChange(3)">我的</div>
-        </footer>
-    </body>
-    <script type="text/javascript" src="./script/api.js"></script>
-    <script type="text/javascript" src="./script/common.js"></script>
-    <script type="text/javascript" src="./script/localdb.js"></script>
-    <script type="text/javascript">
-        apiready = function() {
-            fnReadyOpenWin();
+        </div>
+    </div>
+    <!--header结束 -->
+    <!--content开始-->
+    <div id="content"></div>
+    <!--content结束-->
+    <!--footer开始-->
+    <div id="footer">
+        <form name="Menu">
+            <input type="radio" name="footers" id="ifooter_home" checked="true"/>
+            <a tapmode="homeActive" onclick="jumpFrame('home');">
+                <p class="home"></p>
+                <center>脉脉</center>
+            </a>
+            <input type="radio" name="footers" id="ifooter_jobs"/>
+            <a tapmode="jobsActive" onclick="jumpFrame('jobs');">
+                <p class="jobs"></p>
+                <center>人脉招聘</center>
+            </a>
+            <input type="radio" name="footers" id="ifooter_contacts"/>
+            <a tapmode="contactsActive" onclick="jumpFrame('contacts');">
+                <p class="contacts"></p>
+                <center>我的人脉</center>
+            </a>
+            <input type="radio" name="footers" id="ifooter_myself"/>
+            <a tapmode="myselfActive" onclick="jumpFrame('myself');">
+                <p class="myself"></p>
+                <center>个人中心</center>
+            </a>
+        </form>
+    </div>
+    <!--footer结束 -->
+</div>
+</body>
+<script src="./script/api.js"></script>
+<script>
+var curPageName; // !< 标记当前界面.
 
-            if (!$api.getStorage('city')) {
-                $api.setStorage('city', '北京');
+function openPicture(){
+    api.getPicture({
+        sourceType:	'library',
+        encodingType:	'png',
+        mediaValue:	'pic',
+        destinationType:	'url',
+        allowEdit:	true,
+        quality:	50,
+        targetWidth:100,
+        targetHeight:100,
+        saveToPhotoAlbum:	false
+    },	function(ret,	err){
+        if	(ret)	{
+            api.alert({msg:(ret.data+'时长'+ret.duration+'s')});
+        }	else{
+            api.alert({msg:err.msg});
+        };
+    });
+}
+
+
+function openScanner(){
+    var obj = api.require('scanner');
+    obj.open(function(ret,err) {
+        api.alert({
+            title: '扫描结果',
+            msg: ret.msg
+        });
+    });
+}
+
+function openContacts(){
+    api.openContacts(
+        function(ret,err){
+            if(ret.status){
+                var	msg	=	'姓名:'+ret.name+'--电话:'+ret.phone;
+                api.alert({msg:msg});
+            }else{
+                api.alert({msg:err.msg});
+            };
+        }
+    );
+}
+
+function openHomeFrameGroup(num) {
+	if("home" === curPageName){
+		return;
+	}
+	
+	curPageName = "home";
+	
+		api.execScript({"frameName": "contacts", "script":"closeSelf();"});
+	
+    var width=parseInt(window.getComputedStyle($api.byId("checkSt"),null).width);
+    $api.byId('slider_statust').style.left=50+(width*0.2)+"px";	
+	$api.byId('slider_statust').style.top=($api.byId('header').offsetHeight-10)+"px";
+    var s = window.getComputedStyle($api.byId('content'), null);
+    var height = parseInt(s.height);
+    api.setFrameGroupAttr({name: 'jobsGroup', hidden: true});
+    api.setFrameGroupAttr({name: 'myselfGroup', hidden: true});
+    api.setFrameAttr({name: 'contacts', hidden: true});
+	
+    api.openFrameGroup({
+        name: 'homeGroup',
+        background: '#FFF',
+        rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
+        index: num,
+        frames: [
+            {
+                name: 'dynamic',
+                url: './html/main_dynamic.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#fff'
+            },
+            {
+                name: 'anon',
+                url: './html/main_anon.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#FFF'
             }
+        ]
+    }, function (ret) {
+        if (ret.index == 0) {
+            api.execScript({
+                name: api.winName,
+                script: 'slderbarCallback("home_bar",0,"checkSt")'
+            })
+        } else if (ret.index == 1) {
+            api.execScript({
+                name: api.winName,
+                script: 'slderbarCallback("home_bar",100,"checkSt")'
+            })
+        }
+    });
+    api.setFrameGroupAttr({name: 'homeGroup', hidden: false});
+}
 
-            fnInitListener();
-
-            api.sendEvent({
-                name: 'cityChange'
-            });
-
-            fnInit();
-
-            fnOpenDatabase();
-            fnChange(0);
-
-            fnGetLocation(function() {
-                setTimeout(function() {
-                    fnOpenWelcome();
-                }, 100);
-            });
-        };
-
-        function fnInitListener() {
-            var flag = false;
-            api.addEventListener({
-                name: 'keyback'
-            }, function(ret, err) {
-                if (false == flag) {
-                    api.toast({
-                        msg: '再按一次退出',
-                        duration: 2000,
-                        location: 'bottom'
-                    });
-                    flag = true;
-                    setTimeout(function() {
-                        flag = false;
-                    }, 2000);
-                } else {
-                    api.closeWidget({
-                        silent: true
-                    });
-                }
-            });
-
-            api.addEventListener({
-                name: 'cityChange'
-            }, function(ret, err) {
-                var city = $api.getStorage('city') || '北京';
-
-                if (city.length > 3) {
-                    city = city.substring(0, 3) + '...';
-                }
-
-                var currentCity = $api.domAll('.currentCity');
-                for (var i = 0; i < currentCity.length; i++) {
-                    currentCity[i].innerHTML = city;
-                };
-            });
-        };
-
-        function fnGetLocation(callback) {
-            var bmap = api.require('bMap');
-            bmap.getLocation({
-                autoStop: true
-            }, function(ret, err) {
-                if (ret.status) {
-                    $api.setStorage('LBS', ret);
-                    api.sendEvent({
-                        name: 'custom_lbs'
-                    });
-                }
-
-                callback();
-            });
-        };
-
-        var headers, footers, headerHeight, footerHeight;
-
-        function fnInit() {
-            var header = $api.byId('header');
-            var footer = $api.byId('footer');
-
-            headers = $api.domAll(header, '.header-item');
-            footers = $api.domAll(footer, 'div');
-
-            for (var i = 0; i < headers.length; i++) {
-                $api.fixIos7Bar(headers[i]);
+function openJobsFrameGroup(num) {
+	if("jobs" === curPageName){
+		return;
+	}
+	
+	curPageName = "jobs";
+	
+	api.execScript({"frameName": "contacts", "script":"closeSelf();"});
+	
+    var s = window.getComputedStyle($api.byId('content'), null);
+    var height = parseInt(s.height);
+    api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
+    api.setFrameGroupAttr({name: 'myselfGroup', hidden: true});
+    api.setFrameAttr({name: 'contacts', hidden: true});
+    api.openFrameGroup({
+        name: 'jobsGroup',
+        background: '#FFF',
+        rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
+        index: num,
+        frames: [
+            {
+                name: 'position',
+                url: './html/jobs_position.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#fff'
+            },
+            {
+                name: 'talent',
+                url: './html/jobs_talent.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#FFF'
             }
+        ]
+    }, function (ret) {
 
-            headerHeight = $api.offset(header).h;
-            footerHeight = $api.offset(footer).h;
-        };
+    });
+    api.setFrameGroupAttr({name: 'jobsGroup', hidden: false});
+}
 
-        function fnOpenScanner() {
-            var fnscanner = api.require('FNScanner');
-            fnscanner.openScanner({}, function(ret, err) {
-                if (ret && 'success' == ret.eventType) {
-                    alert(ret.content);
-                }
-            });
-        };
-
-        var frames = ['home_frame', 'groupbuy_frame', 'find_frame', 'my_frame'];
-
-        function fnChange(index) {
-            for (var i = 0; i < headers.length; i++) {
-                if (index == i) {
-                    $api.addCls(headers[i], 'header-item-act');
-                    $api.addCls(footers[i], 'active');
-
-                    var y = 3 == index ? 0 : headerHeight;
-                    api.openFrame({
-                        name: frames[i],
-                        url: './html/' + frames[i] + '.html',
-                        bounces: false,
-                        bgColor: '#f0f0f0',
-                        vScrollBarEnabled: false,
-                        hScrollBarEnabled: false,
-                        rect: {
-                            x: 0,
-                            y: y,
-                            w: 'auto',
-                            h: api.frameHeight - y - footerHeight
-                        }
-                    });
-                } else {
-                    $api.removeCls(headers[i], 'header-item-act');
-                    $api.removeCls(footers[i], 'active');
-
-                    api.setFrameAttr({
-                        name: frames[i],
-                        hidden: true
-                    });
-                }
+function openMyselfFrameGroup(num) {
+	if("self" === curPageName){
+		return;
+	}
+	
+	curPageName = "self";
+	
+		api.execScript({"frameName": "contacts", "script":"closeSelf();"});
+		
+    var width=parseInt(window.getComputedStyle($api.byId("myCheckSt"),null).width);
+    $api.byId('My_slider_status').style.left=(width*0.3-5)+"px";	
+	$api.byId('My_slider_status').style.top=($api.byId('header').offsetHeight-10)+"px";
+    var s = window.getComputedStyle($api.byId('content'), null);
+    var height = parseInt(s.height);
+    api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
+    api.setFrameGroupAttr({name: 'jobsGroup', hidden: true});
+    api.setFrameAttr({name: 'contacts', hidden: true});
+    api.openFrameGroup({
+        name: 'myselfGroup',
+        background: '#FFF',
+        rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
+        index: num,
+        frames: [
+            {
+                name: 'message',
+                url: './html/messageCenter.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#fff'
+            },
+            {
+                name: 'setting',
+                url: './html/mySetting.html',
+                bounces: true,
+                opaque: true,
+                bgColor: '#FFF'
             }
-        };
+        ]
+    }, function (ret) {
+        if (ret.index == 0) {
+            api.execScript({
+                name: api.winName,
+                script: 'slderbarCallback("myself",0,"myCheckSt")'
+            })
+        } else if (ret.index == 1) {
+            api.execScript({
+                name: api.winName,
+                script: 'slderbarCallback("myself",162,"myCheckSt")'
+            })
+        }
+    });
+    api.setFrameGroupAttr({name: 'myselfGroup', hidden: false});
+}
 
-        function fnOpenWelcome() {
-            var frames = [];
-            for (var i = 1; i <= 4; i++) {
-                frames.push({
-                    name: 'welcome_frame_' + i,
-                    url: './html/welcome_frame_' + i + '.html',
-                    bounces: false,
-                    bgColor: './image/welcome/' + i + '.png'
-                });
-            }
+function openContactsFrame() {
+	if("contact" === curPageName){
+		return;
+	}
+	
+	curPageName = "contact";
+	
+    var s = window.getComputedStyle($api.byId('content'), null);
+    api.setFrameGroupAttr({name: 'jobsGroup', hidden: true});
+    api.setFrameGroupAttr({name: 'myselfGroup', hidden: true});
+    api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
+	api.closeFrame({"name": "contacts"});
+    api.openFrame({
+        name: "contacts",
+        bounces: true,
+        url: './html/main_contacts.html',
+        bgColor: "#ffffff",
+        rect: {
+            x: 0,
+            y: $api.byId('header').offsetHeight,
+            w: parseInt(s.width),
+            h: parseInt(s.height)
+        }
+    });
+    api.setFrameAttr({name: 'contacts', hidden: false});
+}
 
-            api.openFrameGroup({
-                name: 'welcome_group',
-                scrollEnabled: true,
-                rect: {
-                    x: 0,
-                    y: 0,
-                    w: 'auto',
-                    h: 'auto'
-                },
-                index: 0,
-                frames: frames
-            });
-        };
-    </script>
+function radioSelect(id) {
+    var ret = 0;
+    var e = $api.byId(id);
+    if (e && !e.checked) {
+        e.checked = true;
+        ret = 1;
+    }
+    return ret;
+}
 
+
+function jumpFrame(url) {
+    try{
+        radioSelect('ifooter_' + url);
+        radioSelect('iheader_' + url);
+        if (url == 'home') {
+            openHomeFrameGroup(0);
+        } else if (url == 'jobs') {
+            openJobsFrameGroup(0);
+        } else if (url == 'myself') {
+            openMyselfFrameGroup(0);
+        } else if (url == 'contacts') {
+            openContactsFrame();
+        }
+    }catch(e){
+        alert(e)
+    }
+
+}
+
+function slderbar(groupName,index) {
+    api.setFrameGroupIndex({
+        name:groupName,
+        index:index,
+        scroll:true
+    });
+}
+
+function slderbarCallback(id, num,barId) {
+    var width=parseInt(window.getComputedStyle($api.byId(barId),null).width);
+    if(num!=0){
+        num=width;
+    }
+    $api.css($api.byId(id),
+       "-webkit-transform:translate(" + num + "px,0)"
+    );
+}
+
+function openSearch() {
+    api.openWin({
+        name: 'search',
+        url: './html/search.html',
+        bounces: false,
+        opaque: false,
+        animation: {
+            type: "movein",
+            subType: "from_bottom",
+            duration: 300
+        }
+    });
+}
+apiready = function () {
+    var header = $api.byId('header');
+	(function(el){
+	        var strDM = api.systemType;
+	        if (strDM == 'ios') {
+	            var strSV = api.systemVersion;
+	            var numSV = parseInt(strSV,10);   
+	            var fullScreen = api.fullScreen;
+	            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
+	            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
+	                el.style.paddingTop = '20px';
+					
+					/*搜索图标单独处理.*/
+					$api.byId('search-advertise1').style.top = "31px";
+					$api.byId('search-advertise2').style.top = "31px";
+	            }
+	        }   
+	    })(header);
+	
+    api.addEventListener({name: 'keyback'}, function(ret, err){
+        api.closeWidget();
+    });
+
+    jumpFrame('home');
+};
+
+</script>
 </html>
