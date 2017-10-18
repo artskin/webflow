@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+	
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .innerBox {
+            display: block;
+            width: 100%;
+        }
+        .innerBox li {
+            width: 100%;
+            height: 60px;
+            background: #FFFFFF;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 14px;
+            border-bottom: 1px solid #bebebe;
+        }
+    </style>
+</head>
+<body>
+<ul id="list" class="innerBox">
+    <li tapmode="" onclick = "textToVoice(0)">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40px" width="40px"
+                  src="../image/avatar_matter.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;">
+            <div style="-webkit-box-flex:1;">待请求事项</div>
+
+            <div style="-webkit-box-flex:1;">3个请求处理，个人资料完善</div>
+        </div>
+    </li>
+    <li tapmode="" onclick = "textToVoice(1)">
+        <div style="display:-webkit-box;-webkit-box-align: center;-webkit-box-pack: center;height:100%;width:60px;"><img height="40" width="40"
+                  src="../image/avatar_maimai.png"></div>
+        <div class="message-info" style="-webkit-box-flex:1;display:-webkit-box;-webkit-box-orient:vertical;">
+            <div style="-webkit-box-flex:1;">脉脉小助手</div>
+
+            <div style="-webkit-box-flex:1;">您现在的人脉影响力是4</div>
+        </div>
+    </li>
+
+</ul>
+</body>
+<script src="../script/api.js"></script>
+<script>
+
+    apiready = function () {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: 'rgba(0,0,0,0)',
+            textColor: '#666',
+            textDown: '下拉刷新',
+            textUp: '释放刷新'
+        }, function(ret, err){
+            loadData();
+        });
+        api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+        });
+    };
+	
+    function loadData(){
+        api.refreshHeaderLoadDone();
+        api.parseTapmode();
+    }
+	
+	/* 文本转语音. */
+	function textToVoice(num){
+		if(0 === num){
+			voice("待请求事项:三个请求处理,个人资料完善.");
+		}
+		if(1 === num){
+			voice("脉脉小助手:您现在的人脉影响力是4.");
+		}
+		
+		function voice(text){
+		    var speechRecognizer = api.require('speechRecognizer');
+		    speechRecognizer.read({
+		         "readStr": text
+		    },function(ret,err){
+				api.toast({
+					"msg": "点击重复收听",
+					"duration": 1000,
+					"location": 'middle'
+				});
+		    });
+		}
+	}
+</script>
+</html>

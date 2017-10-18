@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+        .flex1{
+            -webkit-box-flex:1;
+        }
+        .-webkit-box{
+            display:-webkit-box;
+        }
+        .-webkit-box-vertical{
+            -webkit-box-orient:vertical;
+        }
+        .-webkit-box-center{
+            -webkit-box-pack:center;
+            -webkit-box-align:center;
+        }
+        .break-word{
+            word-wrap:break-word;
+        }
+        .-webkit-box-pack-end{
+            -webkit-box-pack:end;
+            -webkit-box-align:center;
+        }
+    </style>
+
+
+</head>
+<body ontouchmove="Scroll()" mousemove="Scroll()">
+<div>
+    <div class="page__bd">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">推荐产品</div>
+            <div class="weui-panel__bd" id="list">
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_01.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">在线贷</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">在线贷是指个人与个人间的小额借贷交易，一般需要借助电子商务专业网络平台帮助借贷双方确立借贷关系并完成相关交易手续。。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_02.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">小牛贷</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">小牛在线是小牛金服旗下普惠互联网金融平台,为投资者提供天天牛、安心牛等理财产品.签署银行资金存管协议,资金做到流转透明。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_03.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">融360</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">融360是专注于金融领域的智能搜索平台,为企业和个人提供专业的贷款、信用卡及理财在线搜索和申请服务,目前已合作近10000家金融机构,涵盖30000款金融产品。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_04.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">天天基金</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">天天基金网(fund.eastmoney.com)是上市公司东方财富旗下专业的基金网站,证监会核准的首批独立基金销售机构。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_05.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">小财猪</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">小麦金融专注于为大众提供多元化的综合理财服务。... 为了让理财号运营者更好的与用户进行沟通,提升用户体验。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="../image/app_06.png" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">任我花</h4>
+                        <span class="right"><em class="green">2314</em>人成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val">2000元</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">3个月</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">0.3%</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc hide">任我花是一家大数据金融技术平台,通过机器学习和大数据挖掘等技术,对18-35岁年轻人进行信用评分和分级授信。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script src="../script/api.js"></script>
+<script>
+
+    apiready = function(){
+		api.setRefreshHeaderInfo({
+			visible: true,
+			bgColor: 'rgba(0,0,0,0)',
+			textColor: '#666',
+			textDown: '下拉刷新',
+			textUp: '释放刷新'	
+		}, function(ret, err){
+	        loadData();
+		});
+	    api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+	        loadData();
+	    });
+	};
+	
+	// --------------------------------------------
+	
+	function loadData(){
+	    api.refreshHeaderLoadDone();
+	    var content = $api.byId('list');
+	    $api.append(content,$api.html(content));
+	    api.parseTapmode();
+	}
+	
+	// -------------------------------------------
+	
+	/* 微博分享. */
+	function sinaWiebo(){
+		/* 试试微博分想功能*/
+        var rgistUrl = 'http://www.apicloud.com';
+        var oldeAppId = '2691317466';
+        var sinaWeiBo = api.require('sinaWeiBo');
+        sinaWeiBo.auth({
+           appId: oldeAppId,
+            redirectUrl:rgistUrl
+        },function(ret,err){
+            if (ret.status) {
+		        sinaWeiBo.sendRequest({
+		            contentType: "text",
+		            text: "APICloud新浪微博模块试用:真的可以发微博?"
+		        },function(ret,err){
+		            if (ret.status) {
+		                api.alert({
+		                    title: '发表微博',
+		                    msg: '发表成功',
+		                    buttons: ['确定']
+		                });
+		            }else{
+		                api.alert({
+		                    title: '发表微博',
+		                    msg: err.msg,
+		                    buttons: ['确定']
+		                });
+		            };
+		        });
+            }else{
+                api.alert({msg:err.msg});
+            }
+        });
+	}
+	
+	// -----------------------------------------
+</script>
+</html>
