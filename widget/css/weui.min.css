@@ -11,3 +11,9 @@
 .green{color: #0bb20c;}
 .text-center{text-align: center}
 .text-right{text-align: right}
+.page_padding{padding: 10px 10px 0;}
+a.weui-media-box{margin-bottom: 10px;background: #fff;border-radius: 8px;}
+html,body{background-color:#fb7114;}
+.weui-panel{background: none}
+.weui-media-box:before{content: normal}
+.weui-panel:before{border-top:none}
