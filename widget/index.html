@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" href="./css/main.css">
     <style>
         #header_home {
@@ -95,6 +94,7 @@
         <input type="radio" name="headers" id="iheader_home" checked="true"/>
 
         <div id="header_home">
+            <div class="hide">
             <a id="back_home" tapmode="" onclick="openSearch()" class="search"></a>
             <a tapmode="" onclick="slderbar('homeGroup',0)" id="checkSt" class="flex2" style="color: #ffffff;text-align: center">
                 实名动态
@@ -108,6 +108,8 @@
             <div class="slider_status" id="slider_statust">
                 <span id="home_bar"></span>
             </div>
+            </div>
+            <div class="flex2" style="color: #ffffff;text-align: center">首页</div>
         </div>
         <input type="radio" name="headers" id="iheader_jobs"/>
 
@@ -171,22 +173,22 @@
             <input type="radio" name="footers" id="ifooter_home" checked="true"/>
             <a tapmode="homeActive" onclick="jumpFrame('home');">
                 <p class="home"></p>
-                <center>脉脉</center>
+                <center>首页</center>
             </a>
             <input type="radio" name="footers" id="ifooter_jobs"/>
             <a tapmode="jobsActive" onclick="jumpFrame('jobs');">
                 <p class="jobs"></p>
-                <center>人脉招聘</center>
+                <center>新品</center>
             </a>
             <input type="radio" name="footers" id="ifooter_contacts"/>
             <a tapmode="contactsActive" onclick="jumpFrame('contacts');">
                 <p class="contacts"></p>
-                <center>我的人脉</center>
+                <center>高通过</center>
             </a>
             <input type="radio" name="footers" id="ifooter_myself"/>
             <a tapmode="myselfActive" onclick="jumpFrame('myself');">
                 <p class="myself"></p>
-                <center>个人中心</center>
+                <center>我的</center>
             </a>
         </form>
     </div>
@@ -267,7 +269,7 @@ function openHomeFrameGroup(num) {
         frames: [
             {
                 name: 'dynamic',
-                url: './html/main_dynamic.html',
+                url: './html/home.html',
                 bounces: true,
                 opaque: true,
                 bgColor: '#fff'
@@ -362,7 +364,7 @@ function openMyselfFrameGroup(num) {
         frames: [
             {
                 name: 'message',
-                url: './html/messageCenter.html',
+                url: './html/uCenter.html',
                 bounces: true,
                 opaque: true,
                 bgColor: '#fff'

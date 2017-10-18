@@ -34,3 +34,11 @@ html,body{
     color: white;
 }
 .con{font-size: 28px; text-align: center;}
+
+.weui-media-box__thumb{border-radius: 6px;}
+.placeholder{font-size: 12px;}
+.right{position: absolute;right: 15px;top:15px;font-size: 12px;line-height:2;}
+.val{font-weight: bold}
+.green{color: #0bb20c;}
+.text-center{text-align: center}
+.text-right{text-align: right}

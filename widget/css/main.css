@@ -3,7 +3,8 @@
 	padding:0;
 	border:0;
 	color:#999;
-	font-family: Tahoma, Geneva, sans-serif;
+	/*font-family: Tahoma, Geneva, sans-serif;*/
+	font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 	font-style:normal;
 }
 
@@ -24,6 +25,7 @@ body{
 footer,header,section,dialog,menu,a,label,strong,var,em,del,time,figcaption,figure,pre,img,small,mark,cite,code,fieldset,button{
 	display:block;
 }
+.hide{display:none}
 
 #main{
 	position:absolute;
@@ -111,9 +113,24 @@ input[type="radio"]{
 #footer form{
 	padding-top:0.5625em;
 	height:2.5625em;
-	background:url(../image/footer_menu.png) repeat-x;
+	/*background:url(../image/footer_menu.png) repeat-x;*/
+	background: #f8f8f8;
 	-webkit-background-size:auto 3.125em;
-	font-weight:bold;
+	font-weight:200;
+}
+#footer form:before{
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	border-top: 1px solid #CCCCCC;
+	color: #CCCCCC;
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
 }
 #footer input[type="radio"] + a p{
 	width:100%;
@@ -148,12 +165,13 @@ input[type="radio"]{
 
 #footer input[type="radio"] + a center{
 	font-size:0.75em;
-	color:#000;
-	opacity:0.3;
+	color:#7d7f82;
 	-webkit-transition-duration:200ms;
+
 }
 #footer input[type="radio"]:checked + a center{
 	opacity:1;
+	color:#0956ac;
 }
 
 .home{

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<widget id="A6966916087660" version="0.0.1">
-  <name>用APICloud作脉脉模板</name>
-  <description>用APICloud作脉脉模板</description>
-  <author email="yanfengstyle@163.com" href="https://github.com/altair007">颜风</author>
+<widget id="A6053606608623" version="0.0.1">
+  <name>借贷超市</name>
+  <description>借贷超市</description>
+  <author email="artskin@163.com" href="https://github.com/artskin">artskin</author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="pageBounce" value="true"/>
