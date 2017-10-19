@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
+    <style>
+	html,body{
+		-webkit-touch-callout:none;
+		-webkit-text-size-adjust:none;
+		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+		-webkit-user-select:none;
+	}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .innerBox {
+            display: block;
+            width: 100%;
+        }
+        .innerBox li {
+            width: 100%;
+            height: 60px;
+            background: #FFFFFF;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #CDCCD1;
+        }
+        .smallFont{
+            font-size: 13px;
+            color: #bebebe;
+        }
+        .flex1{
+            -webkit-box-flex:1;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app" class="page__bd page_padding">
+    <div class="weui-panel weui-panel_access">
+        <ul class="weui-panel__bd">
+            <li v-for="item in item.list">
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <i v-if="item.isHot === '1'" class="isHot">热</i>
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" :src="item.logo" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">{{ item.name }}</h4>
+                        <span class="right"><em class="orange">{{ item.totalnumber }}</em> 成功借款</span>
+                        <div class="weui-flex">
+                            <div class="weui-flex__item"><div class="val orange">{{ item.amount }}</div><div class="placeholder">贷款额度</div></div>
+                            <div class="weui-flex__item text-center"><div class="val">{{ item.timelimit }}</div><div class="placeholder">贷款期限</div></div>
+                            <div class="weui-flex__item text-right"><div class="val">{{ item.rate }}</div><div class="placeholder">贷款利率</div></div>
+                        </div>
+                        <p class="weui-media-box__desc">{{ item.desc }}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/vue.min.js"></script>
+<script src="../script/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            title:'Vue + axios',
+            item:'loading'
+        },
+        created:function(){
+            var self = this;
+            axios.get('http://192.168.10.68/product/list?type=1')
+                .then(function (response) {
+                    console.log("axios",response.data.data);
+                    self.item = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    });
+    apiready = function () {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: 'rgba(0,0,0,0)',
+            textColor: '#666',
+            textDown: '下拉刷新',
+            textUp: '释放刷新'
+        }, function(ret, err){
+            loadData();
+        });
+        api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+            loadData();
+        });
+    };
+	
+    function loadData(){
+        api.refreshHeaderLoadDone();
+        var content = $api.byId('list');
+        $api.append(content,$api.html(content));
+        api.parseTapmode();
+    }
+	
+	/* 微信分享. */
+	function weiXinShare(){
+    	/* 体验微信分享模块. */
+		api.confirm({
+			"title": "体验 微信 分享功能",
+			"msg": "分享APICloud端API传奇到朋友圈...",
+			"buttons": ["残忍拒绝", "立即分享"]
+		}, function(ret, err){
+
+			if(2 == ret.buttonIndex){
+				follow();
+			}
+		})
+
+		// 一个内部方法,用于实现完整的微信分享功能.
+		function follow()
+		{
+		    var weiXin = api.require('weiXin');
+		    weiXin.registerApp({
+		        appId: 'wxd0d84bbf23b4a0e4'
+		    }, function(ret, err) {
+		        if (!ret.status) {// 应用注册失败
+					api.alert({
+						"title": "分享失败",
+						"msg": "您可手动关注我们的公众账号:APICloud",
+						"buttons": ["确定"]
+					}, function(ret, err){
+
+					});
+
+					return;
+		        } 
+				/*发布微信分享*/
+			    weiXin.sendRequest({
+			        scene: "timeline",
+			        contentType: "web_page",
+					title:"APICloud全球首家完美兼容iPhone6，有图有真相~~",
+			        description: "iOS8崩溃吗？iPhone6适配了吗？APICloud全球首家完美兼容iPhone6，有图有真相~~",
+			        thumbUrl: "http://mmbiz.qpic.cn/mmbiz/lp6euAmKsAFS1YTWZSyvDBmA4JkibHqlKzDVEWQRbpiagddy5uXdHkM6CgXpNPHhibco5uIemWul9pSaUD9JxpC5Q/0",
+			        contentUrl: "http://mp.weixin.qq.com/s?__biz=MzA3MTk3MTQyMQ==&mid=200555999&idx=1&sn=ceb2ca5f93906aff3ba0339c7abf2488#rd"
+
+			    }, function(ret, err) {
+			        if ( ! ret.status) {
+			            api.alert({
+			                title: '分享失败',
+			                msg: '您可手动关注我们的公众账号:APICloud',
+			                buttons: ['确定']
+			            });
+			        } else {
+			            api.alert({
+			                title: '分享成功',
+			                msg: '感谢您对我们的支持!',
+			                buttons: ['确定']
+			            });
+			        };
+			    });
+		    });
+
+		}
+	}
+</script>
+</html>

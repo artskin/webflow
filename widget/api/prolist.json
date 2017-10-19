@@ -1,0 +1,82 @@
+{
+  "code": "200",
+  "msg": "success",
+  "data": {
+      "totalPage": "21",
+      "nextPage": "2",
+      "list" : [
+          {
+              "id":"1",
+              "name":"在线贷",
+              "logo":"../image/app_01.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"简单资料，快速审核。您的应急钱包。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"1"
+          },
+          {
+              "id":"2",
+              "name":"小牛贷",
+              "logo":"../image/app_02.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"掌中零钱袋，随时话，下月还。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"1"
+          },
+          {
+              "id":"3",
+              "name":"融360",
+              "logo":"../image/app_03.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"多种借款产品，还款灵活，1天内到账。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"0"
+          },
+          {
+              "id":"4",
+              "name":"在线贷",
+              "logo":"../image/app_04.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"小额快速借款，只需身份证即可。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"0"
+          },
+          {
+              "id":"5",
+              "name":"小财猪",
+              "logo":"../image/app_05.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"千元极速到账，随身钱包。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"0"
+          },
+          {
+              "id":"6",
+              "name":"任我花",
+              "logo":"../image/app_06.png",
+              "rate":"2%~8%",
+              "amount":"2000",
+              "timelimit":"30天~90天",
+              "totalnumber":"2100",
+              "desc":"上传芝麻分，立即领现金。",
+              "url":"https://www.dianrong.com/account/create?utm_channel=marketA&utm_company=dianrong",
+              "isHot":"0"
+          }
+      ]
+  }
+}

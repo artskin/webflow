@@ -13,7 +13,6 @@ html,body{
 	-webkit-text-size-adjust:none;
 	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 	-webkit-user-select:none;
-	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fb6b00), to(rgba(251, 107, 0, 0.5)));
 }
 
 body{
@@ -35,7 +34,7 @@ footer,header,section,dialog,menu,a,label,strong,var,em,del,time,figcaption,figu
 	width:100%;
 	min-height:100%;
 	overflow:hidden;
-	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fb6b00), to(rgba(251, 107, 0, 0.5)));
+	background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fb6900), to(#ffa854));
 }
 
 input[type="radio"]{
@@ -64,8 +63,8 @@ input[type="radio"]{
 }
 
 #header{
-    background-color: #fb7114;
 	-webkit-background-size: auto 2.8125em;
+	color: #fff;
 }
 
 
@@ -172,7 +171,7 @@ input[type="radio"]{
 }
 #footer input[type="radio"]:checked + a center{
 	opacity:1;
-	color:#0956ac;
+	color:#fd872d;
 }
 
 .home{
@@ -188,3 +187,4 @@ input[type="radio"]{
 	background-image:url(../image/tab_myself_normal.png);
 }
 
+.headbar_title{text-align: center;color: #fff;height: 2.8125em;}

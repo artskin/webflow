@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/weui.min.css" />
     <style>
         #header_home {
             display: -webkit-box;
@@ -109,12 +110,15 @@
                 <span id="home_bar"></span>
             </div>
             </div>
-            <div class="flex2" style="color: #ffffff;text-align: center">首页</div>
+            <div class="flex2 headbar_title">首页</div>
         </div>
         <input type="radio" name="headers" id="iheader_jobs"/>
 
-        <div id="header_jobs" style="-webkit-box-orient:vertical;height:75px">
-            <ul class="flex1">
+        <div id="header_jobs" style="-webkit-box-orient:vertical;">
+            <div class="flex1 headbar_title">
+                新品
+            </div>
+            <ul class="flex1 hide">
                 <li style="-webkit-box-flex:5;" onclick="opacity(this)">
                     <input type="text" class="search-input" tapmode="search-inputActive" onclick="openSearch()"/>
                     <span class="search-advertise" id="search-advertise1"></span>
@@ -123,7 +127,7 @@
 
                 </li>
             </ul>
-            <ul style="background-color: #f0f0f0;height: 30px;line-height: 30px">
+            <ul class="hide" style="background-color: #f0f0f0;height: 30px;line-height: 30px">
                 <li tapmode="" onclick="slderbar('jobsGroup',0)" class="flex2"
                     style="color: #000;text-align: center;border-right: 1px solid #fff">
                     看职位
@@ -185,11 +189,11 @@
                 <p class="contacts"></p>
                 <center>高通过</center>
             </a>
-            <input type="radio" name="footers" id="ifooter_myself"/>
+            <!--<input type="radio" name="footers" id="ifooter_myself"/>
             <a tapmode="myselfActive" onclick="jumpFrame('myself');">
                 <p class="myself"></p>
                 <center>我的</center>
-            </a>
+            </a>-->
         </form>
     </div>
     <!--footer结束 -->
@@ -201,14 +205,14 @@ var curPageName; // !< 标记当前界面.
 
 function openPicture(){
     api.getPicture({
-        sourceType:	'library',
-        encodingType:	'png',
-        mediaValue:	'pic',
+        sourceType     :	'library',
+        encodingType   :	'png',
+        mediaValue     :	'pic',
         destinationType:	'url',
-        allowEdit:	true,
-        quality:	50,
-        targetWidth:100,
-        targetHeight:100,
+        allowEdit      :	true,
+        quality        :	50,
+        targetWidth    :100,
+        targetHeight   :100,
         saveToPhotoAlbum:	false
     },	function(ret,	err){
         if	(ret)	{
@@ -250,7 +254,9 @@ function openHomeFrameGroup(num) {
 	
 	curPageName = "home";
 	
-		api.execScript({"frameName": "contacts", "script":"closeSelf();"});
+	api.execScript({"frameName": "contacts", "script":"closeSelf();"});
+
+
 	
     var width=parseInt(window.getComputedStyle($api.byId("checkSt"),null).width);
     $api.byId('slider_statust').style.left=50+(width*0.2)+"px";	
@@ -263,23 +269,15 @@ function openHomeFrameGroup(num) {
 	
     api.openFrameGroup({
         name: 'homeGroup',
-        background: '#FFF',
         rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
         index: num,
         frames: [
             {
-                name: 'dynamic',
-                url: './html/home.html',
-                bounces: true,
-                opaque: true,
-                bgColor: '#fff'
-            },
-            {
-                name: 'anon',
-                url: './html/main_anon.html',
-                bounces: true,
-                opaque: true,
-                bgColor: '#FFF'
+                name    : 'dynamic',
+                url     : './html/home.html',
+                bounces : true,
+                opaque  : true,
+                bgColor : 'rgba(0,0,0,0)'
             }
         ]
     }, function (ret) {
@@ -314,16 +312,15 @@ function openJobsFrameGroup(num) {
     api.setFrameAttr({name: 'contacts', hidden: true});
     api.openFrameGroup({
         name: 'jobsGroup',
-        background: '#FFF',
         rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
         index: num,
         frames: [
             {
                 name: 'position',
-                url: './html/jobs_position.html',
+                url: './html/pro_new.html',
                 bounces: true,
                 opaque: true,
-                bgColor: '#fff'
+                bgColor : 'rgba(0,0,0,0)'
             },
             {
                 name: 'talent',
@@ -483,6 +480,10 @@ function openSearch() {
 }
 apiready = function () {
     var header = $api.byId('header');
+    //$api.fixStatusBar(header);
+    api.setStatusBarStyle({
+        style: 'light'
+    });
 	(function(el){
 	        var strDM = api.systemType;
 	        if (strDM == 'ios') {
