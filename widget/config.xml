@@ -16,7 +16,7 @@
   <preference name="fullScreen" value="false"/>
 	<preference name="smartUpdate" value="false" />
 
-	<preference name="debug" value="true"/>
+	<preference name="debug" value="false"/>
   <preference name="iOS7StatusBarAppearance" value="true"/>
   <preference name="StatusBarAppearance" value="true"/>
   <preference name="customRefreshHeader" value="UIPullRefresh"/>
@@ -42,13 +42,17 @@
     <param name="rgistUrl" value="http://www.apicloud.com"/>
   </feature>
   <feature name="pushGeTui">
-    <param name="ios_appkey" value="xCGkZR1bCp6gscLUB20Dl4" />
-    <param name="ios_appid" value="G5lfFkQZ008VoZUXydA2r2" />
-    <param name="ios_appsecret" value="RuxlC8ExWA7T4NFoJhQFd6" />
+    <param name="ios_appkey" value="E5Ydudltmh9CNivALrenc9" />
+    <param name="ios_appid" value="3ZxZ2A1vSD98j55usouwM7" />
+    <param name="ios_appsecret" value="lHIJwAz1dNA2GPWbdMtb89" />
 
     <param name="android_appkey" value="E5Ydudltmh9CNivALrenc9" />
     <param name="android_appid" value="3ZxZ2A1vSD98j55usouwM7" />
     <param name="android_appsecret" value="lHIJwAz1dNA2GPWbdMtb89" />
     <param name="android_groupid" value="" />
+  </feature>
+  <feature name="ajpush">
+      <param name="app_key" value="27c0194282232aed969a6e0b" />
+      <param name="channel" value="artskin_channel" />
   </feature>
 </widget>

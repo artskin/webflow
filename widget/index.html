@@ -534,10 +534,12 @@ apiready = function () {
     // 初始化第三方推送模块，个推
     function initPushGeTui() {
 
-        var pushGeTui = api.require('pushGeTui');
+        var uzgetuisdk = api.require('pushGeTui');
 
         // 注册设备和应用信息到个推
-        pushGeTui.initialize(function(ret, err) {
+        uzgetuisdk.initialize(function(ret, err) {
+
+
           // console.log("结果"+ret.result);
           alert("init result--->", ret.result);
           alert(err.code + "===" + err.description + "===" + err.type);
@@ -588,16 +590,37 @@ apiready = function () {
     }
 
     function registerDeviceToken() {
-      var pushGeTui = api.require('pushGeTui');
+      var uzgetuisdk = api.require('pushGeTui');
         var param = {
             deviceToken: api.deviceToken,
         };
 
-        pushGeTui.registerDeviceToken(param, function(ret, err) {
+        uzgetuisdk.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
             alert(log);
         });
     }
+
+    //初始化极光推送服务
+    var ajpush = api.require('ajpush');
+
+    ajpush.init(function(ret) {
+        if (ret && ret.status){
+            //success
+        }
+        console.log("极光："+ret);
+    });
+
+    var ajpush = api.require('ajpush');
+    ajpush.setListener(
+        function(ret) {
+             var id = ret.id;
+             var title = ret.title;
+             var content = ret.content;
+             var extra = ret.extra;
+             console.log(id);
+        }
+    );
 
 
 };
