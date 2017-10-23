@@ -42,20 +42,12 @@
     <param name="rgistUrl" value="http://www.apicloud.com"/>
   </feature>
   <feature name="pushGeTui">
-      <param name="ios_appkey" value="" />
-      <param name="ios_appid" value="" />
-      <param name="ios_appsecret" value="" />
-      <param name="android_appkey" value="E5Ydudltmh9CNivALrenc9" />
-      <param name="android_appid" value="3ZxZ2A1vSD98j55usouwM7" />
-      <param name="android_appsecret" value="lHIJwAz1dNA2GPWbdMtb89" />
-      <param name="android_groupid" value="" />
-    </feature>
-    AppID：
-
-AppSecret：
-
-AppKey：
-
-MasterSecret：
-n3munS1sAv6VuhDZAm0OpA
+    <param name="ios_appkey" value="" />
+    <param name="ios_appid" value="" />
+    <param name="ios_appsecret" value="" />
+    <param name="android_appkey" value="E5Ydudltmh9CNivALrenc9" />
+    <param name="android_appid" value="3ZxZ2A1vSD98j55usouwM7" />
+    <param name="android_appsecret" value="lHIJwAz1dNA2GPWbdMtb89" />
+    <param name="android_groupid" value="" />
+  </feature>
 </widget>

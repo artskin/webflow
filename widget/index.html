@@ -527,6 +527,35 @@ apiready = function () {
 
     jumpFrame('home');
 
+    //个推设置
+
+    var uzgetuisdk = api.require('pushGeTui');
+    uzgetuisdk.initialize(function(ret) {
+        var value = "";
+        switch (ret.type) {
+            case 'cid':
+                value = 'cid:' + ret.cid;
+                break;
+            case 'payload':
+                value = 'payload:' + ret.payload;
+                break;
+            case 'occurError':
+                value = 'occurError';
+                break;
+        }
+    });
+
+    function registerDeviceToken() {
+        var param = {
+            deviceToken: api.deviceToken,
+        };
+        uzgetuisdk.registerDeviceToken(param, function(ret, err) {
+            var log = 'registerDeviceToken:' + ret.result;
+            console.log(log);
+        });
+    }
+
+    
 };
 
 </script>
