@@ -500,6 +500,7 @@ function openSearch() {
 }
 apiready = function () {
     var header = $api.byId('header');
+    registerDeviceToken();
     //$api.fixStatusBar(header);
     api.setStatusBarStyle({
         style: 'light'
@@ -536,6 +537,7 @@ apiready = function () {
 
         // 注册设备和应用信息到个推
         pushGeTui.initialize(function(ret) {
+          console.log("结果"+ret.result);
             var value = "";
 
             // 区分通知和消息
@@ -582,10 +584,11 @@ apiready = function () {
     }
 
     function registerDeviceToken() {
+      var pushGeTui = api.require('pushGeTui');
         var param = {
             deviceToken: api.deviceToken,
         };
-        uzgetuisdk.registerDeviceToken(param, function(ret, err) {
+        pushGeTui.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
             console.log(log);
         });
