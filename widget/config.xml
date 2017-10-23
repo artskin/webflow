@@ -55,4 +55,8 @@
       <param name="app_key" value="27c0194282232aed969a6e0b" />
       <param name="channel" value="artskin_channel" />
   </feature>
+  <feature name="tencentPush">
+      <param name="android_accessId" value="2100269375" />
+      <param name="android_accessKey" value="A533VKFK5A8M" />
+  </feature>
 </widget>

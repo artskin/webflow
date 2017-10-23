@@ -540,9 +540,7 @@ apiready = function () {
         uzgetuisdk.initialize(function(ret, err) {
 
 
-          // console.log("结果"+ret.result);
-          alert("init result--->", ret.result);
-          alert(err.code + "===" + err.description + "===" + err.type);
+          console.log("结果"+ret.result);
           console.log("error--->"+err);
             var value = "";
 
@@ -621,6 +619,63 @@ apiready = function () {
              console.log(id);
         }
     );
+
+    //信鸽
+    api.require('tencentPush').registerPush(function(ret, err) {
+        if (ret.status) {
+            alert("注册成功，token为：" + ret.token);
+        } else {
+            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
+        }
+    });
+
+    // 注册设备
+    var tencentPush = api.require('tencentPush');
+
+    var resultCallback = function(ret, err) {
+        if (ret.status) {
+            alert("注册成功，token为：" + ret.token);
+        } else {
+            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
+        }
+    };
+
+    tencentPush.registerPush(resultCallback);
+
+
+    // 注册设备并绑定用户账号
+    var tencentPush = api.require('tencentPush');
+
+    var resultCallback = function(ret, err) {
+        if (ret.status) {
+            alert("注册成功，token为：" + ret.token);
+        } else {
+            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
+        }
+    };
+
+    // 需要绑定的账号，若为"*"表示解除之前的账号绑定
+    var params = { account: "testAccount" };
+    tencentPush.registerPush(params, resultCallback);
+
+    // 解除设备绑定的账号
+    var tencentPush = api.require('tencentPush');
+    var resultCallback = function(ret, err) {
+        if (ret.status) {
+            alert("注册成功，token为：" + ret.token);
+        } else {
+            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
+        }
+    };
+
+    // 需要绑定的账号，若为"*"表示解除之前的账号绑定
+    var params = { account: "*" };
+    tencentPush.registerPush(params, resultCallback);
+
+    // 打开信鸽调试模式
+    var tencentPush = api.require('tencentPush');
+    var param = {debug:true};
+    tencentPush.config(param);
 
 
 };
