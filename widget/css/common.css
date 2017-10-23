@@ -12,21 +12,21 @@ html,body{
            flex-flow: column;
 }
 #header{
-    text-align: center; background-color: #81a9c3; color: #fff;
+    text-align: center; color: #fff;
     width: 100%;
 }
 #header h1{
     font-size: 20px; height: 44px; line-height: 44px; margin: 0em; color: #fff;
 }
 #main{
-    -webkit-box-flex: 1; 
+    -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1;
     padding: 2em;
 }
 #footer{
     height: 30px; line-height: 30px;
-    background-color: #81a9c3; 
+    background-color: #81a9c3;
     width: 100%;
     text-align: center;
 }
@@ -34,3 +34,4 @@ html,body{
     color: white;
 }
 .con{font-size: 28px; text-align: center;}
+.page-title{text-align: center;}

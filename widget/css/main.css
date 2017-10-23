@@ -141,13 +141,13 @@ input[type="radio"]{
 	-webkit-transition-duration:200ms;
 }
 #footer input[type="radio"]:checked + a p.home,.homeActive{
-    background-image:url('../image/tab_feeds_selected.png');
+    background-image:url('../image/tab_home_selected.png');
 }
 #footer input[type="radio"]:checked + a p.jobs,.jobsActive{
-    background-image:url('../image/tab_jobs_selected.png');
+    background-image:url('../image/tab_new_selected.png');
 }
 #footer input[type="radio"]:checked + a p.contacts,.contactsActive{
-    background-image:url('../image/tab_contacts_selected.png');
+    background-image:url('../image/tab_pass_selected.png');
 }
 #footer input[type="radio"]:checked + a p.myself,.myselfActive{
     background-image:url('../image/tab_myself_selected.png');
@@ -175,13 +175,13 @@ input[type="radio"]{
 }
 
 .home{
-	background-image:url('../image/tab_feeds_normal.png');
+	background-image:url('../image/tab_home_normal.png');
 }
 .jobs{
-	background-image:url(../image/tab_jobs_normal.png);
+	background-image:url(../image/tab_new_normal.png);
 }
 .contacts{
-	background-image:url(../image/tab_contacts_normal.png);
+	background-image:url(../image/tab_pass_normal.png);
 }
 .myself{
 	background-image:url(../image/tab_myself_normal.png);

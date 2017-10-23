@@ -18,6 +18,7 @@
 
 	<preference name="debug" value="false"/>
   <preference name="iOS7StatusBarAppearance" value="true"/>
+  <preference name="StatusBarAppearance" value="true"/>
   <preference name="customRefreshHeader" value="UIPullRefresh"/>
   <preference name="autoUpdate" value="true"/>
   <permission name="readPhoneState"/>

@@ -101,7 +101,7 @@
                 实名动态
             </a>
             <a tapmode="" onclick="slderbar('homeGroup',1)" class="flex2" style="color: #ffffff;text-align: center">
-                匿名八卦
+                匿名八卦1
             </a>
 
             <a id="load_home" class="gossip" tapmode="" onclick="openScanner()"></a>
@@ -142,7 +142,10 @@
         <input type="radio" name="headers" id="iheader_contacts"/>
 
         <div id="header_contacts">
-            <ul>
+          <div class="flex1 headbar_title">
+              高通过
+          </div>
+            <ul class="hide">
                 <li style="-webkit-box-flex:5;" onclick="opacity(this)">
                     <input type="text" class="search-input" tapmode="search-inputActive" onclick="openSearch()"/>
                     <span class="search-advertise" id="search-advertise2"></span>
@@ -201,6 +204,26 @@
 </body>
 <script src="./script/api.js"></script>
 <script>
+var indexToWeb = function(options){
+  var s = window.getComputedStyle($api.byId('content'), null);
+  var height = parseInt(s.height);
+    api.openWin({
+        name: 'webpage',
+        url: './html/webpage.html',
+        rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
+        pageParam: options,
+        bgColor:"#fb6900",
+        bounces: false,
+        rect: {
+            x: 0,
+            y: 0,
+            w: 'auto',
+            h: 'auto'
+        },
+        reload: true,
+        showProgress: true
+    });
+};
 var curPageName; // !< 标记当前界面.
 
 function openPicture(){
@@ -211,8 +234,8 @@ function openPicture(){
         destinationType:	'url',
         allowEdit      :	true,
         quality        :	50,
-        targetWidth    :100,
-        targetHeight   :100,
+        targetWidth    : 100,
+        targetHeight   : 100,
         saveToPhotoAlbum:	false
     },	function(ret,	err){
         if	(ret)	{
@@ -251,22 +274,19 @@ function openHomeFrameGroup(num) {
 	if("home" === curPageName){
 		return;
 	}
-	
+
 	curPageName = "home";
-	
-	api.execScript({"frameName": "contacts", "script":"closeSelf();"});
 
-
-	
+  api.execScript({"frameName": "contacts", "script":"closeSelf();"});
     var width=parseInt(window.getComputedStyle($api.byId("checkSt"),null).width);
-    $api.byId('slider_statust').style.left=50+(width*0.2)+"px";	
-	$api.byId('slider_statust').style.top=($api.byId('header').offsetHeight-10)+"px";
+    $api.byId('slider_statust').style.left=50+(width*0.2)+"px";
+	  $api.byId('slider_statust').style.top=($api.byId('header').offsetHeight-10)+"px";
     var s = window.getComputedStyle($api.byId('content'), null);
     var height = parseInt(s.height);
     api.setFrameGroupAttr({name: 'jobsGroup', hidden: true});
     api.setFrameGroupAttr({name: 'myselfGroup', hidden: true});
     api.setFrameAttr({name: 'contacts', hidden: true});
-	
+
     api.openFrameGroup({
         name: 'homeGroup',
         rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
@@ -300,11 +320,11 @@ function openJobsFrameGroup(num) {
 	if("jobs" === curPageName){
 		return;
 	}
-	
+
 	curPageName = "jobs";
-	
+
 	api.execScript({"frameName": "contacts", "script":"closeSelf();"});
-	
+
     var s = window.getComputedStyle($api.byId('content'), null);
     var height = parseInt(s.height);
     api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
@@ -340,13 +360,13 @@ function openMyselfFrameGroup(num) {
 	if("self" === curPageName){
 		return;
 	}
-	
+
 	curPageName = "self";
-	
+
 		api.execScript({"frameName": "contacts", "script":"closeSelf();"});
-		
+
     var width=parseInt(window.getComputedStyle($api.byId("myCheckSt"),null).width);
-    $api.byId('My_slider_status').style.left=(width*0.3-5)+"px";	
+    $api.byId('My_slider_status').style.left=(width*0.3-5)+"px";
 	$api.byId('My_slider_status').style.top=($api.byId('header').offsetHeight-10)+"px";
     var s = window.getComputedStyle($api.byId('content'), null);
     var height = parseInt(s.height);
@@ -394,19 +414,19 @@ function openContactsFrame() {
 	if("contact" === curPageName){
 		return;
 	}
-	
+
 	curPageName = "contact";
-	
+
     var s = window.getComputedStyle($api.byId('content'), null);
     api.setFrameGroupAttr({name: 'jobsGroup', hidden: true});
     api.setFrameGroupAttr({name: 'myselfGroup', hidden: true});
     api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
-	api.closeFrame({"name": "contacts"});
+	  api.closeFrame({"name": "contacts"});
     api.openFrame({
         name: "contacts",
         bounces: true,
-        url: './html/main_contacts.html',
-        bgColor: "#ffffff",
+        url: './html/pro_pass.html',
+        bgColor : 'rgba(0,0,0,0)',
         rect: {
             x: 0,
             y: $api.byId('header').offsetHeight,
@@ -488,24 +508,25 @@ apiready = function () {
 	        var strDM = api.systemType;
 	        if (strDM == 'ios') {
 	            var strSV = api.systemVersion;
-	            var numSV = parseInt(strSV,10);   
+	            var numSV = parseInt(strSV,10);
 	            var fullScreen = api.fullScreen;
 	            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
 	            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
 	                el.style.paddingTop = '20px';
-					
+
 					/*搜索图标单独处理.*/
 					$api.byId('search-advertise1').style.top = "31px";
 					$api.byId('search-advertise2').style.top = "31px";
 	            }
-	        }   
+	        }
 	    })(header);
-	
+
     api.addEventListener({name: 'keyback'}, function(ret, err){
         api.closeWidget();
     });
 
     jumpFrame('home');
+
 };
 
 </script>

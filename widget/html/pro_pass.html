@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
     <style>
 	html,body{
 		-webkit-touch-callout:none;
@@ -11,7 +11,7 @@
 		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 		-webkit-user-select:none;
 	}
-	
+
         *{
             margin: 0;
             padding: 0;
@@ -40,13 +40,63 @@
     </style>
 </head>
 <body>
+  <div id="app" class="page__bd page_padding">
+      <div class="weui-panel weui-panel_access">
+          <ul class="weui-panel__bd">
+              <li v-for="item in item.list">
+                  <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                      <i v-if="item.isHot === '1'" class="isHot">热</i>
+                      <div class="weui-media-box__hd">
+                          <img class="weui-media-box__thumb" :src="item.logo" alt="">
+                      </div>
+                      <div class="weui-media-box__bd">
+                          <h4 class="weui-media-box__title">{{ item.name }}</h4>
+                          <span class="right"><em class="orange">{{ item.totalnumber }}</em> 成功借款</span>
+                          <div class="weui-flex">
+                              <div class="weui-flex__item"><div class="val orange">{{ item.amount }}</div><div class="placeholder">贷款额度</div></div>
+                              <div class="weui-flex__item text-center"><div class="val">{{ item.timelimit }}</div><div class="placeholder">贷款期限</div></div>
+                              <div class="weui-flex__item text-right"><div class="val">{{ item.rate }}</div><div class="placeholder">贷款利率</div></div>
+                          </div>
+                          <p class="weui-media-box__desc">{{ item.desc }}</p>
+                      </div>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
 </body>
 <script src="../script/api.js"></script>
+<script src="../script/global.js"></script>
+<script src="../script/vue.min.js"></script>
+<script src="../script/axios.min.js"></script>
 <script>
-
+var app = new Vue({
+    el:'#app',
+    data:{
+        title:'Vue + axios',
+        item:'loading'
+    },
+    created:function(){
+        var self = this;
+        axios.get('http://192.168.10.68/product/list?type=2')
+            .then(function (response) {
+                console.log("axios",response.data.data);
+                self.item = response.data.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+});
+function loadData(){
+    api.refreshHeaderLoadDone();
+    var content = $api.byId('list');
+    $api.append(content,$api.html(content));
+    api.parseTapmode();
+}
 var subView; //!< 子视图.
-	
-    apiready = function () {				
+
+    apiready = function () {
 		var listView = api.require("listView");
 		subView = listView;
 		var cells = [
@@ -229,9 +279,9 @@ var subView; //!< 子视图.
 			        subTitleColor: "#999999"
 				}
 					];
-		
+
 		listView.open({
-			"cellBgColor": "#ffffff",	        
+			"cellBgColor": "#ffffff",
 			rightBtn: [{
 	            color: "#52C09A",
 	            selecteColor: "#429b7c",
@@ -253,7 +303,7 @@ var subView; //!< 子视图.
 	   					 duration: 1000,
 	   					 location: 'middle'
 	   				 });
-				 
+
    				 var speechRecognizer = api.require('speechRecognizer');
    				 speechRecognizer.record({
    					    },function(ret,err){
@@ -265,64 +315,64 @@ var subView; //!< 子视图.
    					     });
 						 return;
 				}
-				
+
 				/* 一度人脉:打开通讯录,自动给好友打电话. */
 				if(0 === ret["index"]){
 					var contact = api.require('contact');
-					
+
 				    contact.openContact({},function(ret,err){
 						var group = ret["phones"]["0"];
 						if("undefined" === typeof(group)){
 							api.alert({"title":"提示", "msg": "未存储此人号码,无法拨号!"});
 						}
-						
+
 						var phoneNum;
 						for(var groupName in group){
 							phoneNum = group[groupName];
 							break;
 						}
-						
+
 						api.call({
 							"number": phoneNum
-						});    
+						});
 				             });
-					
+
 					return;
 				}
-				
+
 				api.toast({
 					msg: '您尚未加入脉脉,暂无法查看此人信息!',
 					duration: 1000,
 					location: 'middle'
 				});
-		    	
+
 		});
     };
-	
+
 	// -------------------------------------------
-	
+
     function loadData(){
         api.refreshHeaderLoadDone();
         var content = $api.byId('list');
         $api.append(content,$api.html(content));
         api.parseTapmode();
     }
-	
+
 	// -----------------------------------------
-	
+
 	/* 关闭自身. */
 	function closeSelf(){
 		/*关闭前,先释放相关资源.*/
-		
+
 		if(subView["close"]){ // 关闭子视图.
 			subView["close"]();
 		}
-		
+
 		// 关闭自身.
 		api.closeWin();
-		
+
 	}
-	
+
 	// ------------------------------------------
 </script>
 </html>
