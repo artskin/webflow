@@ -13,7 +13,7 @@
 .text-center{text-align: center}
 .text-right{text-align: right}
 .page_padding{padding: 10px 10px 0;}
-a.weui-media-box{margin-bottom: 10px;background: #fff;border-radius: 8px;overflow: hidden}
+a.weui-media-box{background: #fff;border-radius: 8px;overflow: hidden}
 html,body{background:transparent;}
 .weui-panel{background: none}
 .weui-media-box:before{content: normal}
@@ -53,3 +53,6 @@ html,body{background:transparent;}
     border-top: 30px solid #ffe400;
     border-right: 30px solid transparent;
 }
+
+
+.pro_list li{margin-bottom: 10px;}

@@ -38,7 +38,7 @@
 <body ontouchmove="Scroll()" mousemove="Scroll()">
     <div id="app" class="page__bd page_padding">
         <div class="weui-panel weui-panel_access">
-        <ul class="weui-panel__bd">
+        <ul class="weui-panel__bd pro_list">
             <li v-for="item in item.list">
                 <a href="javascript:void(0);" v-bind:data-title="item.name" v-bind:data-url="item.url" tapmode onclick="toWeb(this);" data-frameName="" class="weui-media-box weui-media-box_appmsg">
                     <i v-if="item.isHot === '1'" class="isHot">热</i>
