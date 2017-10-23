@@ -500,6 +500,7 @@ function openSearch() {
 }
 apiready = function () {
     var header = $api.byId('header');
+    initPushGeTui();
     registerDeviceToken();
     //$api.fixStatusBar(header);
     api.setStatusBarStyle({
@@ -588,9 +589,10 @@ apiready = function () {
         var param = {
             deviceToken: api.deviceToken,
         };
+
         pushGeTui.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
-            console.log(log);
+            alert(log);
         });
     }
 
