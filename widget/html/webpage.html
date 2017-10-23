@@ -12,11 +12,13 @@
         #header{
             width: 100%;
         }
-        .header-content{color: #fff;height: 45px;width: 100%;position:relative;padding-top: 25px;}
-        .page-title{color: #fff;line-height: 40px;}
-        .placeholder{color: #fff;font-size: 14px;
+        .header-content{color: #fff;width: 100%;position:relative;}
+        .page-title,.placeholder{color: #fff}
+        .page-title{height: 100%;line-height:36px;}
+        .placeholder{
+          font-size: 14px;
           width: 56px;
-          height: 30px;
+          height: 22px;
         }
         .btn-box{
             width: 56px;
@@ -192,6 +194,26 @@
 
         var header = $api.byId('header');
         //$api.fixStatusBar(header);
+        api.setStatusBarStyle({
+            style: 'light'
+        });
+        //沉浸式状态栏高度
+        (function(el){
+  	        var strDM = api.systemType;
+  	        if (strDM == 'ios') {
+  	            var strSV = api.systemVersion;
+  	            var numSV = parseInt(strSV,10);
+  	            var fullScreen = api.fullScreen;
+  	            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
+  	            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
+  	                el.style.paddingTop = '20px';
+
+  					/*搜索图标单独处理.*/
+  					// $api.byId('search-advertise1').style.top = "31px";
+  					// $api.byId('search-advertise2').style.top = "31px";
+  	            }
+  	        }
+  	    })(header);
 
         window.headerPos = $api.offset(header);
         var main = $api.byId('main');
