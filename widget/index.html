@@ -537,8 +537,11 @@ apiready = function () {
         var pushGeTui = api.require('pushGeTui');
 
         // 注册设备和应用信息到个推
-        pushGeTui.initialize(function(ret) {
-          console.log("结果"+ret.result);
+        pushGeTui.initialize(function(ret, err) {
+          // console.log("结果"+ret.result);
+          alert("init result--->", ret.result);
+          alert(err.code + "===" + err.description + "===" + err.type);
+          console.log("error--->"+err);
             var value = "";
 
             // 区分通知和消息
