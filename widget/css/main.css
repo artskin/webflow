@@ -83,8 +83,7 @@ input[type="radio"]{
 	overflow:hidden;
 }
 #header > div > a.active{
-	background-color:transparent;
-	opacity:0.5;
+	
 }
 #header .search{
 	width:60px;
