@@ -7,7 +7,7 @@
 .weui-media-box__thumb{border-radius: 6px;}
 .placeholder{font-size: 12px;color: #828282;}
 .right{position: absolute;right: 15px;top:15px;font-size: 12px;line-height:2;}
-.val{}
+.val{white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
 .green{color: #0bb20c;}
 .orange{color: #f95700;}
 .text-center{text-align: center}

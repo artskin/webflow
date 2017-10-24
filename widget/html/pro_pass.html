@@ -39,7 +39,7 @@
       <div class="weui-panel weui-panel_access">
           <ul class="weui-panel__bd pro_list">
               <li v-for="item in item.list">
-                  <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                  <a href="javascript:void(0);" v-bind:data-title="item.name" v-bind:data-url="item.url" tapmode onclick="toWeb(this);"  class="weui-media-box weui-media-box_appmsg">
                     <i v-if="item.isHot === '1'" class="isHot">热</i>
                       <div class="weui-media-box__hd">
                           <img class="weui-media-box__thumb" :src="item.logo" alt="">
@@ -91,6 +91,22 @@ function loadData(){
 var subView; //!< 子视图.
 
     apiready = function () {
+
+      api.setRefreshHeaderInfo({
+        visible: true,
+        loadingImg: 'widget://image/refresh.png',
+        bgColor: 'rgba(0,0,0,0)',
+        textColor: 'rgba(255,255,255,0.5)',
+        textDown: '下拉刷新',
+        textUp: '释放刷新'
+      }, function(ret, err){
+            loadData();
+              app();
+      });
+      api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
+          loadData();
+      });
+
 		var listView = api.require("listView");
 		subView = listView;
 		var cells = [
