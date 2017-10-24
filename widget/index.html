@@ -502,6 +502,7 @@ apiready = function () {
     var header = $api.byId('header');
     initPushGeTui();
     registerDeviceToken();
+    //xingePush();
     //$api.fixStatusBar(header);
     api.setStatusBarStyle({
         style: 'light'
@@ -595,7 +596,7 @@ apiready = function () {
 
         uzgetuisdk.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
-            alert(log);
+            console.log(log);
         });
     }
 
@@ -621,63 +622,29 @@ apiready = function () {
     );
 
     //信鸽
-    api.require('tencentPush').registerPush(function(ret, err) {
-        if (ret.status) {
-            alert("注册成功，token为：" + ret.token);
-        } else {
-            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
-        }
-    });
+    function xingePush(){
+        // 注册设备
+        var tencentPush = api.require('tencentPush');
 
-    // 注册设备
-    var tencentPush = api.require('tencentPush');
+        console.log("tencentPush"+tencentPush);
 
-    var resultCallback = function(ret, err) {
-        if (ret.status) {
-            alert("注册成功，token为：" + ret.token);
-        } else {
-            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
-        }
-    };
+        var resultCallback = function(ret, err) {
+            if (ret.status) {
+                alert("注册成功，token为：" + ret.token);
+            } else {
+                alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
+            }
+        };
 
-    tencentPush.registerPush(resultCallback);
+        // 需要绑定的账号，若为"*"表示解除之前的账号绑定
+        var params = { account: "testAccount" };
+        tencentPush.registerPush(params, resultCallback);
 
-
-    // 注册设备并绑定用户账号
-    var tencentPush = api.require('tencentPush');
-
-    var resultCallback = function(ret, err) {
-        if (ret.status) {
-            alert("注册成功，token为：" + ret.token);
-        } else {
-            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
-        }
-    };
-
-    // 需要绑定的账号，若为"*"表示解除之前的账号绑定
-    var params = { account: "testAccount" };
-    tencentPush.registerPush(params, resultCallback);
-
-    // 解除设备绑定的账号
-    var tencentPush = api.require('tencentPush');
-    var resultCallback = function(ret, err) {
-        if (ret.status) {
-            alert("注册成功，token为：" + ret.token);
-        } else {
-            alert("注册失败，错误码：" + err.code + "，错误信息：" + err.msg);
-        }
-    };
-
-    // 需要绑定的账号，若为"*"表示解除之前的账号绑定
-    var params = { account: "*" };
-    tencentPush.registerPush(params, resultCallback);
-
-    // 打开信鸽调试模式
-    var tencentPush = api.require('tencentPush');
-    var param = {debug:true};
-    tencentPush.config(param);
-
-
+        // 打开信鸽调试模式
+        var tencentPush = api.require('tencentPush');
+        var param = {debug:true};
+        tencentPush.config(param);
+    }
 };
 
 </script>
