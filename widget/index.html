@@ -341,13 +341,6 @@ function openJobsFrameGroup(num) {
                 bounces: true,
                 opaque: true,
                 bgColor : 'rgba(0,0,0,0)'
-            },
-            {
-                name: 'talent',
-                url: './html/jobs_talent.html',
-                bounces: true,
-                opaque: true,
-                bgColor: '#FFF'
             }
         ]
     }, function (ret) {
@@ -592,6 +585,7 @@ apiready = function () {
         var param = {
             deviceToken: api.deviceToken,
         };
+        console.log(api.deviceToken);
 
         uzgetuisdk.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
@@ -599,26 +593,6 @@ apiready = function () {
         });
     }
 
-    //初始化极光推送服务
-    var ajpush = api.require('ajpush');
-
-    ajpush.init(function(ret) {
-        if (ret && ret.status){
-            //success
-        }
-        console.log("极光："+ret);
-    });
-
-    var ajpush = api.require('ajpush');
-    ajpush.setListener(
-        function(ret) {
-             var id = ret.id;
-             var title = ret.title;
-             var content = ret.content;
-             var extra = ret.extra;
-             console.log(id);
-        }
-    );
 
     //信鸽
     function xingePush(){
