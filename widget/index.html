@@ -540,11 +540,10 @@ apiready = function () {
         // 注册设备和应用信息到个推
         uzgetuisdk.initialize(function(ret, err) {
 
+          console.log("结果：>"+ret.result);
+          console.log("error:>"+err);
 
-          console.log("结果"+ret.result);
-          console.log("error--->"+err);
             var value = "";
-
             // 区分通知和消息
             switch (ret.type) {
                 // 返回个推平台上的ID

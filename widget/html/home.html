@@ -76,14 +76,13 @@
             var self = this;
             axios.get('../api/prolist.json')
             //axios.get('http://192.168.10.68/product/list?type=1')
-                .then(function (response) {
-                    console.log("axios",response.data.data);
-                    self.item = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-										alert("服务器忙")
-                });
+            .then(function (response) {
+                console.log("axios",response.data.data);
+                self.item = response.data.data;
+            }).catch(function (error) {
+                console.log(error);
+								alert("服务器忙")
+            });
         }
     });
 		var toWeb = function(obj){
