@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/api.css">
     <link rel="stylesheet" type="text/css" href="css/weui.min.css" />
     <style>
         #header_home {
@@ -86,10 +86,11 @@
             background-color: #FFFFFF;
             -webkit-transition: 300ms;
         }
+
     </style>
 </head>
 <body ontouchstart>
-<div id="main">
+<div id="app">
     <!--header开始-->
     <div id="header">
         <input type="radio" name="headers" id="iheader_home" checked="true"/>
@@ -204,26 +205,27 @@
 </body>
 <script src="./script/api.js"></script>
 <script>
-var indexToWeb = function(options){
-  var s = window.getComputedStyle($api.byId('content'), null);
-  var height = parseInt(s.height);
-    api.openWin({
-        name: 'webpage',
-        url: './html/webpage.html',
-        rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
-        pageParam: options,
-        bgColor:"#fb6900",
-        bounces: false,
-        rect: {
-            x: 0,
-            y: 0,
-            w: 'auto',
-            h: 'auto'
-        },
-        reload: true,
-        showProgress: true
-    });
-};
+
+// var indexToWeb = function(options){
+//   var s = window.getComputedStyle($api.byId('content'), null);
+//   var height = parseInt(s.height);
+//     api.openWin({
+//         name: 'webpage',
+//         url: './html/webpage.html',
+//         rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
+//         pageParam: options,
+//         bgColor:"#fb6900",
+//         bounces: false,
+//         rect: {
+//             x: 0,
+//             y: 0,
+//             w: 'auto',
+//             h: 'auto'
+//         },
+//         reload: true,
+//         showProgress: true
+//     });
+// };
 var curPageName; // !< 标记当前界面.
 
 function openPicture(){

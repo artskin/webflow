@@ -7,9 +7,35 @@
 
 })(window);
 
+var isViewOpened = false;
+var X5broser = null;
+
 apiready = function(){
-  
+
+
+
 };
+
+
+function showBrowser(obj){
+	console.log("obj→："+$api.attr(obj,'data-url') ||'');
+		//var iurl = $('iurl').value;
+		var iurl = $api.attr(obj,'data-url') ||'';
+		//iurl = 'index_frm.html';
+		X5broser.open({
+			url: iurl,
+			progress:{
+				color:'#ff7e21'
+			},
+			titleBar:{
+				visible:true,
+				bg:'#fc6900',
+				textColor:'#fff'
+			}
+		}, function(ret){
+			console.log(JSON.stringify(ret));
+		});
+}
 
 function toWeb(obj){
     var url = $api.attr(obj,'data-url') ||'';
