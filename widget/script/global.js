@@ -19,7 +19,6 @@ apiready = function(){
 
 function showBrowser(obj){
 	console.log("obj→："+$api.attr(obj,'data-url') ||'');
-		//var iurl = $('iurl').value;
 		var iurl = $api.attr(obj,'data-url') ||'';
 		//iurl = 'index_frm.html';
 		X5broser.open({

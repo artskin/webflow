@@ -37,6 +37,9 @@
 <div class="page__bd page_padding">
     <div class="weui-panel weui-panel_access">
         <ul id="pro_list" class="weui-panel__bd pro_list">
+          <li class="loading" v-show="loading">
+            <div class="loader"></div>
+          </li>
             <li v-for="item in item.list">
               <a href="javascript:void(0);" v-bind:data-title="item.name" v-bind:data-url="item.url" tapmode onclick="showBrowser(this);" class="weui-media-box weui-media-box_appmsg">
                 <i v-if="item.isHot === '1'" class="isHot">热</i>
@@ -69,17 +72,19 @@
         el:'#pro_list',
         data:{
             title:'Vue + axios',
-            item:'loading'
+            item:'loading',
+            loading : 'true'
         },
         created:function(){
             var self = this;
             axios.get('../api/prolist2.json')
                 .then(function (response) {
+                  self.loading = false;
                     self.item = response.data.data;
                 })
                 .catch(function (error) {
-                    console.log(error);
-                    alert("接口访问失败")
+                  self.loading = false;
+
                 });
         }
     });
@@ -99,6 +104,18 @@
     				api.closeWidget();
     	});
     	console.log("X5broser→："+X5broser);
+
+      api.setRefreshHeaderInfo({
+    		visible: true,
+    		loadingImg: 'widget://image/refresh.png',
+    		bgColor: 'rgba(0,0,0,0)',
+    		textColor: 'rgba(255,255,255,0.5)',
+    		textDown: '下拉刷新',
+    		textUp: '释放刷新'
+    	}, function(ret, err){
+    				loadData();
+    					pro_list();
+    	});
     }
 
 	/* 微信分享. */

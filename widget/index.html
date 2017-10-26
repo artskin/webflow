@@ -206,26 +206,20 @@
 <script src="./script/api.js"></script>
 <script>
 
-// var indexToWeb = function(options){
-//   var s = window.getComputedStyle($api.byId('content'), null);
-//   var height = parseInt(s.height);
-//     api.openWin({
-//         name: 'webpage',
-//         url: './html/webpage.html',
-//         rect: {x: 0, y: $api.byId('header').offsetHeight, w: s.width, h: height},
-//         pageParam: options,
-//         bgColor:"#fb6900",
-//         bounces: false,
-//         rect: {
-//             x: 0,
-//             y: 0,
-//             w: 'auto',
-//             h: 'auto'
-//         },
-//         reload: true,
-//         showProgress: true
-//     });
-// };
+var chromedebug = null;
+apiready = function() {
+	chromedebug = api.require('chromeDebug');
+	openchromelog("chromedebug→:"+chromedebug);
+};
+function openchromelog() {
+	chromedebug.openDebug(function(ret, err) {
+		if (212 == ret.code) {
+			alert(JSON.stringify(ret));
+		} else {
+			console.log(ret);
+		}
+	});
+}
 var curPageName; // !< 标记当前界面.
 
 function openPicture(){

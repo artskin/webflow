@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <link rel="stylesheet" href="../css/weui.min.css" />
     <title>高通过</title>
     <style>
@@ -38,6 +37,9 @@
   <div class="page__bd page_padding">
       <div class="weui-panel weui-panel_access">
           <ul id="pro_list" class="weui-panel__bd pro_list">
+              <li class="loading" v-show="loading">
+                <div class="loader"></div>
+              </li>
               <li v-for="item in item.list">
                   <a href="javascript:void(0);" v-bind:data-title="item.name" v-bind:data-url="item.url" tapmode onclick="showBrowser(this);"  class="weui-media-box weui-media-box_appmsg">
                     <i v-if="item.isHot === '1'" class="isHot">热</i>
@@ -66,20 +68,24 @@
 <script src="../script/global.js"></script>
 
 <script>
-var app = new Vue({
+var pro_list = new Vue({
     el:'#pro_list',
     data:{
         title:'Vue + axios',
-        item:'loading'
+        item:'loading',
+        loading : true
     },
     created:function(){
+      var loading = true;
         var self = this;
         axios.get('http://192.168.10.68/product/list?type=2')
             .then(function (response) {
+                self.loading = false;
                 self.item = response.data.data;
             })
             .catch(function (error) {
-                console.log(error);
+              self.loading = false;
+                console.log("remote Api→:"+error);
             });
     }
 });
