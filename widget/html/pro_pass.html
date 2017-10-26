@@ -82,9 +82,10 @@ var pro_list = new Vue({
             .then(function (response) {
                 self.loading = false;
                 self.item = response.data.data;
+                console.log(response.data.data);
             })
             .catch(function (error) {
-              self.loading = false;
+                self.loading = false;
                 console.log("remote Api→:"+error);
             });
     }
