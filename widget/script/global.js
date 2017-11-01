@@ -18,6 +18,7 @@ var pro_list = new Vue({
     el:'#pro_list',
     data:{
         title:'Vue + axios',
+				apiUrl:'http://101.132.227.142/product/list',
         limit:'5',
         totalPage:'',
         type:1,
@@ -29,8 +30,11 @@ var pro_list = new Vue({
     methods:{
       init: function(){
         var self = this;
+				if(self.type == 1){
+						self.apiUrl = '../api/prolist.json';
+				}
         self.loadmore = '2';
-        axios.post('http://101.132.227.142/product/list',{
+        axios.post(pro_list.apiUrl,{
             type: pro_list.type,
             curPage: pro_list.curPage,
             limit: pro_list.limit
@@ -71,8 +75,6 @@ var pro_list = new Vue({
       }
     }
 });
-
-
 
 function showBrowser(obj){
 	console.log("obj→："+$api.attr(obj,'data-url') ||'');
