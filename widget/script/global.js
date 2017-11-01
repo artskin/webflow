@@ -45,19 +45,32 @@ var pro_list = new Vue({
                 //pro_list.loadmore = false;
                 //self.item  = response.data.data;
                 if(response.data.code == 200){
-                  console.log("当前页码："+pro_list.curPage);
-                  self.totalPage = response.data.data.totalPage;
+                  	console.log("当前页码："+pro_list.curPage);
+                  	self.totalPage = response.data.data.totalPage;
+										console.log("总页码："+pro_list.totalPage);
 
                       if(pro_list.curPage == 1){
                           self.item = response.data.data;
-                      }else{
-                        for(var i=0;i<response.data.data.list.length;i++){
-                            self.item.list.push(response.data.data.list[i]);
-                        }
-                        console.log("数据条数====："+self.item.list.length);
+                      }else if(pro_list.curPage < self.totalPage){
+													if(self.type == 1){
+															for(var i=2;i<response.data.data.list.length;i++){
+																	self.item.list.push(response.data.data.list[i]);
+															}
+													}
+
+	                        for(var i=0;i<response.data.data.list.length;i++){
+	                            self.item.list.push(response.data.data.list[i]);
+	                        }
+	                        console.log("数据条数====："+self.item.list.length);
                           //self.item = response.data.data;
-                      }
-                      pro_list.curPage += 1;
+                      }else{
+													self.loadmore = '3';
+											}
+
+											if(pro_list.curPage < self.totalPage){
+												pro_list.curPage += 1;
+											}
+
                   }else{
                     self.loadmore = '3';
                       // api.toast({

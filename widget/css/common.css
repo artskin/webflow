@@ -179,6 +179,7 @@ input[type="radio"]{
     background-image:url(../image/btn_add_connection_normal.png);
     -webkit-background-size:30px;
 }
+/*foot-tab-style*/
 #footer a{display: block;}
 #footer form{
 	padding-top:0.5625em;
@@ -206,19 +207,25 @@ input[type="radio"]{
 	height:1.4375em;
 	background-repeat:no-repeat;
 	background-position:center top;
-	-webkit-background-size:auto 1.53em;
+	-webkit-background-size:auto 1.4375em;
 	-webkit-transition-duration:200ms;
 }
-#footer input[type="radio"]:checked + a p.home,.homeActive{
+
+.home{background-image:url('../image/tab_home_normal.png');}
+.jobs{background-image:url('../image/tab_new_normal.png');}
+.contacts{background-image:url('../image/tab_pass_normal.png');}
+.myself{background-image:url('../image/tab_myself_normal.png');}
+
+#footer input[type="radio"]:checked + a p.home,.homeActive .home{
     background-image:url('../image/tab_home_selected.png');
 }
-#footer input[type="radio"]:checked + a p.jobs,.jobsActive{
+#footer input[type="radio"]:checked + a p.jobs,.jobsActive .home{
     background-image:url('../image/tab_new_selected.png');
 }
-#footer input[type="radio"]:checked + a p.contacts,.contactsActive{
+#footer input[type="radio"]:checked + a p.contacts,.contactsActive .home{
     background-image:url('../image/tab_pass_selected.png');
 }
-#footer input[type="radio"]:checked + a p.myself,.myselfActive{
+#footer input[type="radio"]:checked + a p.myself,.myselfActive .home{
     background-image:url('../image/tab_myself_selected.png');
 }
 
@@ -226,7 +233,8 @@ input[type="radio"]{
     height: 1.4375em;
     background-repeat: no-repeat;
     background-position: center top;
-    -webkit-background-size: auto 1.53em;
+    -webkit-background-size: auto 1.4375em;
+		opacity:1;
 }
 
 #footer input[type="radio"] + a center{
@@ -240,18 +248,7 @@ input[type="radio"]{
 	color:#fd872d;
 }
 
-.home{
-	background-image:url('../image/tab_home_normal.png');
-}
-.jobs{
-	background-image:url('../image/tab_new_normal.png');
-}
-.contacts{
-	background-image:url('../image/tab_pass_normal.png');
-}
-.myself{
-	background-image:url('../image/tab_myself_normal.png');
-}
+/*page-content*/
 
 .headbar_title{text-align: center;color: #fff;height: 2.8125em;}
 
