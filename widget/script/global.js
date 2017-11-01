@@ -12,9 +12,66 @@ var X5broser = null;
 
 apiready = function(){
 
-
-
 };
+
+var pro_list = new Vue({
+    el:'#pro_list',
+    data:{
+        title:'Vue + axios',
+        limit:'5',
+        totalPage:'',
+        type:1,
+        curPage: 1,
+        loading : true,
+        loadmore : '1',
+        item:'loading'
+    },
+    methods:{
+      init: function(){
+        var self = this;
+        self.loadmore = '2';
+        axios.post('http://101.132.227.142/product/list',{
+            type: pro_list.type,
+            curPage: pro_list.curPage,
+            limit: pro_list.limit
+          })
+          .then(function (response) {
+                self.loading = false;
+                console.log("loadmore----"+self.loadmore);
+                //pro_list.loadmore = false;
+                //self.item  = response.data.data;
+                if(response.data.code == 200){
+                  console.log("当前页码："+pro_list.curPage);
+                  self.totalPage = response.data.data.totalPage;
+
+                      if(pro_list.curPage == 1){
+                          self.item = response.data.data;
+                      }else{
+                        for(var i=0;i<response.data.data.list.length;i++){
+                            self.item.list.push(response.data.data.list[i]);
+                        }
+                        console.log("数据条数====："+self.item.list.length);
+                          //self.item = response.data.data;
+                      }
+                      pro_list.curPage += 1;
+                  }else{
+                    self.loadmore = '3';
+                      // api.toast({
+                      //     msg: response.data.msg,
+                      //     duration: 2000,
+                      //     location: 'bottom'
+                      // });
+                  }
+
+          })
+          .catch(function (error) {
+              self.loading = false;
+              //alert("接口异常:" + error);
+          });
+      }
+    }
+});
+
 
 
 function showBrowser(obj){

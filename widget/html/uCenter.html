@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <style>
 	html,body{
 		-webkit-touch-callout:none;
@@ -11,7 +10,7 @@
 		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 		-webkit-user-select:none;
 	}
-	
+
         *{
             margin: 0;
             padding: 0;
@@ -70,12 +69,12 @@
         api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
         });
     };
-	
+
     function loadData(){
         api.refreshHeaderLoadDone();
         api.parseTapmode();
     }
-	
+
 	/* 文本转语音. */
 	function textToVoice(num){
 		if(0 === num){
@@ -84,7 +83,7 @@
 		if(1 === num){
 			voice("脉脉小助手:您现在的人脉影响力是4.");
 		}
-		
+
 		function voice(text){
 		    var speechRecognizer = api.require('speechRecognizer');
 		    speechRecognizer.read({

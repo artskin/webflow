@@ -1,93 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <link rel="stylesheet" href="./css/api.css">
-    <link rel="stylesheet" type="text/css" href="css/weui.min.css" />
-    <style>
-        #header_home {
-            display: -webkit-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/weui.min.css" />
+<title>首页</title>
+<style>
+    #header_home {
+        display: -webkit-box;
+    }
 
-        .flex1 {
-            -webkit-box-flex: 1
-        }
+    .flex1 {
+        -webkit-box-flex: 1
+    }
 
-        .flex2 {
-            -webkit-box-flex: 2
-        }
+    .flex2 {
+        -webkit-box-flex: 2
+    }
 
-        .flex3 {
-            -webkit-box-flex: 3
-        }
+    .flex3 {
+        -webkit-box-flex: 3
+    }
 
-        .flex4 {
-            -webkit-box-flex: 4
-        }
+    .flex4 {
+        -webkit-box-flex: 4
+    }
 
-        ul {
-            width: 100%;
-            list-style: none;
-            display: -webkit-box;
-            display: box;
-        }
+    ul {
+        width: 100%;
+        list-style: none;
+        display: -webkit-box;
+        display: box;
+    }
 
-        .search-input {
-            margin-left: 7px;
-            width: 90%;
-            height: 30px;
-            border: 0;
-            border-radius: 13px;
-            background: #0070B9;
-            /*去除系统默认的样式*/
-            -webkit-appearance: none;
-            outline: #ffffff;
-        }
-        .search-inputActive{
-           background-color: #013B62;
-        }
-        .search-advertise {
-            background-size: 26px;
-            position: absolute;
-            left: 8px;
-            top: 11px;
-            width: 30px;
-            height: 30px;
-            background-image: url("./image/btn_search_bg.png");
-            background-repeat: no-repeat no-repeat;
-        }
+    .search-input {
+        margin-left: 7px;
+        width: 90%;
+        height: 30px;
+        border: 0;
+        border-radius: 13px;
+        background: #0070B9;
+        /*去除系统默认的样式*/
+        -webkit-appearance: none;
+        outline: #ffffff;
+    }
+    .search-inputActive{
+       background-color: #013B62;
+    }
+    .search-advertise {
+        background-size: 26px;
+        position: absolute;
+        left: 8px;
+        top: 11px;
+        width: 30px;
+        height: 30px;
+        background-image: url("./image/btn_search_bg.png");
+        background-repeat: no-repeat no-repeat;
+    }
 
-        .add-package {
-            background-image: url("./image/btn_add_connection_normal.png");
-            background-repeat: no-repeat no-repeat;
-            background-position: center center;
-        }
+    .add-package {
+        background-image: url("./image/btn_add_connection_normal.png");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+    }
 
-        .add-publish {
-            background-image: url("./image/job_publish_select.png");
-            background-repeat: no-repeat no-repeat;
-            background-position: center center;
-            -webkit-background-size: 30px;
-        }
+    .add-publish {
+        background-image: url("./image/job_publish_select.png");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        -webkit-background-size: 30px;
+    }
 
-        .slider_status {
-            width: 240px;
-            height: 2px;
-            left: 71px;
-            top: 35 px;
-            position: absolute;
-        }
+    .slider_status {
+        width: 240px;
+        height: 2px;
+        left: 71px;
+        top: 35 px;
+        position: absolute;
+    }
 
-        .slider_status span {
-            display: block;
-            width: 73px;
-            height: 100%;
-            background-color: #FFFFFF;
-            -webkit-transition: 300ms;
-        }
+    .slider_status span {
+        display: block;
+        width: 73px;
+        height: 100%;
+        background-color: #FFFFFF;
+        -webkit-transition: 300ms;
+    }
 
-    </style>
+</style>
 </head>
 <body ontouchstart>
 <div id="app">
@@ -333,8 +334,11 @@ function openJobsFrameGroup(num) {
         frames: [
             {
                 name: 'position',
-                url: './html/pro_new.html',
+                url: './html/pro_list.html',
                 bounces: true,
+                pageParam:{
+                  type:2
+                },
                 opaque: true,
                 bgColor : 'rgba(0,0,0,0)'
             }
@@ -346,17 +350,16 @@ function openJobsFrameGroup(num) {
 }
 
 function openMyselfFrameGroup(num) {
-	if("self" === curPageName){
-		return;
-	}
+  	if("self" === curPageName){
+  		return;
+  	}
 
-	curPageName = "self";
-
+    curPageName = "self";
 		api.execScript({"frameName": "contacts", "script":"closeSelf();"});
 
     var width=parseInt(window.getComputedStyle($api.byId("myCheckSt"),null).width);
     $api.byId('My_slider_status').style.left=(width*0.3-5)+"px";
-	$api.byId('My_slider_status').style.top=($api.byId('header').offsetHeight-10)+"px";
+	  $api.byId('My_slider_status').style.top=($api.byId('header').offsetHeight-10)+"px";
     var s = window.getComputedStyle($api.byId('content'), null);
     var height = parseInt(s.height);
     api.setFrameGroupAttr({name: 'homeGroup', hidden: true});
@@ -414,8 +417,11 @@ function openContactsFrame() {
     api.openFrame({
         name: "contacts",
         bounces: true,
-        url: './html/pro_pass.html',
+        url: './html/pro_list.html',
         bgColor : 'rgba(0,0,0,0)',
+        pageParam:{
+          type:1
+        },
         rect: {
             x: 0,
             y: $api.byId('header').offsetHeight,
@@ -529,8 +535,8 @@ apiready = function () {
         // 注册设备和应用信息到个推
         uzgetuisdk.initialize(function(ret, err) {
 
-          console.log("结果：>"+ret.result);
-          console.log("error:>"+err);
+          // console.log("结果：>"+ret.result);
+          // console.log("error:>"+err);
 
             var value = "";
             // 区分通知和消息
@@ -581,11 +587,10 @@ apiready = function () {
         var param = {
             deviceToken: api.deviceToken,
         };
-        console.log(api.deviceToken);
 
         uzgetuisdk.registerDeviceToken(param, function(ret, err) {
             var log = 'registerDeviceToken:' + ret.result;
-            console.log(log);
+            //console.log(log);
         });
     }
 
@@ -594,8 +599,6 @@ apiready = function () {
     function xingePush(){
         // 注册设备
         var tencentPush = api.require('tencentPush');
-
-        console.log("tencentPush"+tencentPush);
 
         var resultCallback = function(ret, err) {
             if (ret.status) {

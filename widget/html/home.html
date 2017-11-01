@@ -1,38 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-<link rel="stylesheet" type="text/css" href="../css/api.css" />
-<link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
-<style>
-	html,body{
-		-webkit-touch-callout:none;
-		-webkit-text-size-adjust:none;
-		-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-		-webkit-user-select:none;
-	}
-    .flex1{
-        -webkit-box-flex:1;
-    }
-    .-webkit-box{
-        display:-webkit-box;
-    }
-    .-webkit-box-vertical{
-        -webkit-box-orient:vertical;
-    }
-    .-webkit-box-center{
-        -webkit-box-pack:center;
-        -webkit-box-align:center;
-    }
-    .break-word{
-        word-wrap:break-word;
-    }
-    .-webkit-box-pack-end{
-        -webkit-box-pack:end;
-        -webkit-box-align:center;
-    }
-</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
+	<title>首页</title>
 </head>
 <body ontouchmove="Scroll()" mousemove="Scroll()">
     <div class="page__bd page_padding">
@@ -74,13 +47,10 @@
         created:function(){
             var self = this;
             axios.get('../api/prolist.json')
-            //axios.get('http://192.168.10.68/product/list?type=1')
             .then(function (response) {
-                console.log("axios",response.data.data);
                 self.item = response.data.data;
             }).catch(function (error) {
-                console.log(error);
-								alert("服务器忙")
+								alert("服务器忙："+error)
             });
         }
     });
@@ -92,7 +62,6 @@ apiready = function () {
 	},function(ret,err){
 				api.closeWidget();
 	});
-	console.log("X5broser→："+X5broser);
 
 	api.setRefreshHeaderInfo({
 		visible: true,
@@ -103,8 +72,9 @@ apiready = function () {
 		textUp: '释放刷新'
 	}, function(ret, err){
 				loadData();
-					pro_list();
+				pro_list();
 	});
+
 	api.addEventListener({name: 'scrolltobottom'}, function(ret, err){
 			loadData();
 	});

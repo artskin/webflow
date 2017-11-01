@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/weui.min.css" />
+    <title>高通过</title>
+</head>
+<body>
+  <div class="page__bd page_padding">
+      <div id="pro_list" class="weui-panel weui-panel_access">
+          <ul class="weui-panel__bd pro_list">
+              <li class="loading" v-show="loading">
+                <div class="loader"></div>
+              </li>
+              <li v-for="item in item.list">
+                  <a href="javascript:void(0);" v-bind:data-title="item.name" v-bind:data-url="item.url" tapmode onclick="showBrowser(this);"  class="weui-media-box weui-media-box_appmsg">
+                    <i v-if="item.isHot === '1'" class="isHot">热</i>
+                      <div class="weui-media-box__hd">
+                          <img class="weui-media-box__thumb" :src="item.logo" alt="">
+                      </div>
+                      <div class="weui-media-box__bd">
+                          <h4 class="weui-media-box__title">{{ item.name }}</h4>
+                          <span class="right"><em class="orange">{{ item.totalnumber }}</em> 成功借款</span>
+                          <div class="weui-flex">
+                              <div class="weui-flex__item"><div class="val orange">{{ item.amount }}元</div><div class="placeholder">贷款额度</div></div>
+                              <div class="weui-flex__item text-center"><div class="val">{{ item.timelimit }}</div><div class="placeholder">贷款期限</div></div>
+                              <div class="weui-flex__item text-right"><div class="val">{{ item.rate }}</div><div class="placeholder">贷款利率</div></div>
+                          </div>
+                          <p class="weui-media-box__desc">{{ item.desc }}</p>
+                      </div>
+                  </a>
+              </li>
+          </ul>
+          <footer class="loadmore">
+            <span v-if="loadmore ==='1'">加载更多</span>
+            <span v-else-if="loadmore ==='2'">加载中...</span>
+            <span v-else-if="loadmore ==='3'">没有更多了</span>
+            <span v-else>网络超时</span>
+          </footer>
+      </div>
+  </div>
+</body>
+<script src="../script/api.js"></script>
+<script src="../script/vue.min.js"></script>
+<script src="../script/axios.min.js"></script>
+<script src="../script/global.js"></script>
+<script>
+//pro_list.init();
+apiready = function () {
+    pro_list.type = api.pageParam.type;
+    pro_list.init();
+    X5broser = api.require('webBrowser');
+
+  	api.addEventListener({
+  				name:'keyback'
+  	},function(ret,err){
+  				api.closeWidget();
+  	});
+
+    //下拉刷新
+    api.setRefreshHeaderInfo({
+      visible: true,
+      loadingImg: 'widget://image/refresh.png',
+      bgColor: 'rgba(0,0,0,0)',
+      textColor: 'rgba(255,255,255,0.5)',
+      textDown: '下拉刷新',
+      textUp: '释放刷新'
+    }, function(ret, err){
+        api.refreshHeaderLoadDone();
+        pro_list.init();
+    });
+
+    //上拉加载
+    api.addEventListener({
+      name: 'scrolltobottom',
+      extra:{
+          threshold:0 //设置距离底部多少距离时触发，默认值为0，数字类型
+      }
+    },function(ret, err){
+        pro_list.loadmore = '1';
+        pro_list.init();
+    });
+}
+	// -----------------------------------------
+
+	/* 关闭自身. */
+	function closeSelf(){
+		/*关闭前,先释放相关资源.*/
+
+		if(subView["close"]){ // 关闭子视图.
+			subView["close"]();
+		}
+
+		// 关闭自身.
+		api.closeWin();
+
+	}
+
+	// ------------------------------------------
+</script>
+</html>
