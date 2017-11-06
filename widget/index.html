@@ -205,6 +205,7 @@
 </div>
 </body>
 <script src="./script/api.js"></script>
+<script src="./script/device.js"></script>
 <script>
 
 var chromedebug = null;
@@ -505,22 +506,34 @@ apiready = function () {
     api.setStatusBarStyle({
         style: 'light'
     });
-	(function(el){
-	        var strDM = api.systemType;
-	        if (strDM == 'ios') {
-	            var strSV = api.systemVersion;
-	            var numSV = parseInt(strSV,10);
-	            var fullScreen = api.fullScreen;
-	            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
-	            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
-	                el.style.paddingTop = '20px';
+	  (function(el){
+        var strDM = api.systemType;
+        if (strDM == 'ios') {
+            var strSV = api.systemVersion;
+            var numSV = parseInt(strSV,10);
+            var fullScreen = api.fullScreen;
+            var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
 
-					/*搜索图标单独处理.*/
-					$api.byId('search-advertise1').style.top = "31px";
-					$api.byId('search-advertise2').style.top = "31px";
-	            }
-	        }
-	    })(header);
+            var screenHeight = api.screenHeight;
+
+            if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
+              //console.log("api.safeArea.top:"+api.safeArea.top);
+              //console.log("api.safeArea.bottom:"+api.safeArea.bottom);
+
+              //if(screenHeight > 2210){
+                //el.style.paddingTop = '20px';
+              //}else{
+                //el.style.paddingTop = '30px';
+                header.style.paddingTop = api.safeArea.top + 'px';
+                footer.style.paddingBottom = api.safeArea.bottom + 'px';
+              //}
+
+      					/*搜索图标单独处理.*/
+      					$api.byId('search-advertise1').style.top = "31px";
+      					$api.byId('search-advertise2').style.top = "31px";
+            }
+        }
+    })(header);
 
     api.addEventListener({name: 'keyback'}, function(ret, err){
         api.closeWidget();
