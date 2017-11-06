@@ -180,6 +180,9 @@ input[type="radio"]{
     -webkit-background-size:30px;
 }
 /*foot-tab-style*/
+#footer{
+	background: #f8f8f8;
+}
 #footer a{display: block;}
 #footer form{
 	padding-top:0.5625em;
